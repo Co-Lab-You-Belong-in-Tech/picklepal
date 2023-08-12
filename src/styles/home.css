@@ -1,0 +1,53 @@
+.home{
+    background-color: var(--bg-light);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 98rem;
+    width:90%;
+}
+.home-logo{
+    width: 50%;
+    height: auto;
+    margin-bottom: 4rem;
+}
+h1{
+    font-weight: 700;
+    font-size: 4rem;
+    font-weight: bolder;
+
+}
+.home_hero-text{
+    font-size: 2.95rem;
+    margin: 2rem 0 6rem 0;
+}
+.have-acct{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+.have-acct span{
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: bold;
+}
+@media(max-width:425px){
+   
+    .home-logo{
+        width: 70%;
+    }
+    h1{
+        font-size: 2.5rem;
+    }
+    .home_hero-text{ 
+        font-size: 1.5rem;
+    }
+}
