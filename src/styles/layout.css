@@ -43,6 +43,9 @@ nav .mobile-ul{
     background-color: var(--bg-light);
  
 }
+.mobile-ul a{
+    margin-bottom: 1.5rem;
+}
 
 nav ul a,nav .mobile-ul a{
     font-weight: bold;
