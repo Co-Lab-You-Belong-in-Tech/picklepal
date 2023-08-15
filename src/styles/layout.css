@@ -1,11 +1,12 @@
 .app-layout{
     background-color: var(--bg-light);
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    padding-top: 12rem;
 }
 .logo-container{
     flex: 1;
@@ -23,6 +24,8 @@ nav{
     position: fixed;
     top: 0;
     width: 100%;
+    background-color: var(--bg-light);
+   
 }
 nav .desktop-ul{  
     flex: 1;
@@ -79,6 +82,15 @@ ul a.active{
     bottom: 0;
     right: 0;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+input{
+    border:1px solid #212121;
+}
+
 
 @media(min-width:725px){
     .mobile-hamburger-menu{
@@ -86,6 +98,13 @@ ul a.active{
     }
     
 }
+@media(max-width:768px){
+    .left-ball{    
+         height: 25rem; 
+         left: -2rem;  
+         
+        }
+    }
 @media(max-width:725px){
     nav{
         height: 8rem;
@@ -97,13 +116,25 @@ ul a.active{
     .mobile-hamburger-menu{
         padding-left: 2rem;
     }
+    .left-ball{
+        top: 9rem;
+        height: 18rem;
+        left: -5rem;
+    }
+    .right-ball{
+        width: 11rem; 
+        right: -3rem;   
+    }
    
     
 }
+
 @media(max-width:425px){
-   
     .nav-logo{
         width: 60%;
+    }
+    .left-ball{
+        left: -7rem;
     }
    
 }
