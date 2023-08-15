@@ -4,7 +4,6 @@
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
     z-index: 1;
     padding-top: 12rem;
 }
@@ -70,17 +69,19 @@ ul a.active{
 }
 .ball{
     position: absolute;
-    width: 15rem;z-index: -3;
+    width: 15rem;
+    z-index: -3;
 
 }
 .left-ball{
     top: 12rem;
     left: 0;
-    height: 30rem;
+    width: 14%;
 }
 .right-ball{
     bottom: 0;
     right: 0;
+    width:  20%;
 }
 form{
     display: flex;
@@ -97,14 +98,10 @@ input{
         display: none;
     }
     
+    
 }
-@media(max-width:768px){
-    .left-ball{    
-         height: 25rem; 
-         left: -2rem;  
-         
-        }
-    }
+
+
 @media(max-width:725px){
     nav{
         height: 8rem;
@@ -116,16 +113,10 @@ input{
     .mobile-hamburger-menu{
         padding-left: 2rem;
     }
-    .left-ball{
-        top: 9rem;
-        height: 18rem;
-        left: -5rem;
+    .app-layout{
+        padding-top:25%;
     }
-    .right-ball{
-        width: 11rem; 
-        right: -3rem;   
-    }
-   
+
     
 }
 
@@ -133,8 +124,6 @@ input{
     .nav-logo{
         width: 60%;
     }
-    .left-ball{
-        left: -7rem;
-    }
+   
    
 }
