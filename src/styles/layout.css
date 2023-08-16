@@ -1,7 +1,6 @@
 .app-layout{
     background-color: var(--bg-light);
-    height: calc(100vh - (env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0)));
- 
+    min-height: 90vh;
     position: relative;
     display: flex;
     justify-content: center;

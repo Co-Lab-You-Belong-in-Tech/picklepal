@@ -45,13 +45,13 @@ function SignUp() {
         
         {step===1 &&
        (<div className='step-1'>
-        <label htmlFor='firstname'> First Name
-       <input {...register("firstname",{required:"firstname is required",minLength:{value:2,message:"min lenght is 2"}})} className='signup-input'type='text' id='firstname'/>
-       <p className='error-message'>{errors.firstname?.message}</p>
+        <label htmlFor='firstName'> First Name
+       <input {...register("firstName",{required:"firstName is required",minLength:{value:2,message:"min lenght is 2"}})} className='signup-input'type='text' id='firstName'/>
+       <p className='error-message'>{errors.firstName?.message}</p>
        </label>
-       <label htmlFor='lastname'> Last Name
-       <input {...register("lastname",{required:"lastname is required",minLength:{value:2,message:"min lenght is 2"}})}type='text' id='lastname'/>
-       <p className='error-message'>{errors.lastname?.message}</p>
+       <label htmlFor='lastName'> Last Name
+       <input {...register("lastName",{required:"lastName is required",minLength:{value:2,message:"min lenght is 2"}})}type='text' id='lastName'/>
+       <p className='error-message'>{errors.lastName?.message}</p>
        </label>
        <label htmlFor='email'>Email Address
        <input {...register("email",{required:"email is required",pattern:
