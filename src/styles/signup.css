@@ -1,11 +1,4 @@
-.signup-container{
-    max-width:50rem ;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
+
 .signup-steps{
     height: 1rem;
     border-radius: 1rem;
@@ -30,15 +23,26 @@
 .signup-form label{
     width: 100%;
     font-size: 1.5rem;
+
 }
 .signup-form input{
     width: 100%;
     height: 4rem;
     border-radius: 1rem;
-    margin-bottom: 2rem;
+
     
 }
 .have-acc{
 font-size: 1.5rem;
 margin-top: 1rem;
+}
+.input-container{
+    position: relative;
+}
+.input-container .icon-right{
+    position: absolute;
+    right:  5px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+
 }
