@@ -40,7 +40,7 @@ function SignUp() {
 
 
   return (
-    <section className='signup-container signInUp-container'>
+    <section className={`${step===2?'increase-width':""} signup-container signInUp-container`}>
       <div className='signup-steps'>
         {<div className={`signup-step1 ${step===2 ? 'signup-step2' : ''}`}></div>}
            
