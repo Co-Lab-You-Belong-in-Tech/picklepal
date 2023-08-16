@@ -25,6 +25,12 @@ function SignUp() {
    else{
     const allData={...step1Data,...data}
     console.log(allData)
+    try{
+
+    }
+    catch(err){
+      console.warn(err)
+    }
    }
   }
   useEffect(() => {

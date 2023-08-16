@@ -8,12 +8,17 @@
   --light-grey:#D9D9D9;
 
 }
+html{
+  font-size: 62.5%;
+  height: 100vh;
+}
 #root{
   background-color: var(--bg-light);
   max-width: 100%;
-  min-height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
+
 
 *,*::after,*::before{
   box-sizing: border-box;
@@ -21,13 +26,11 @@
   padding: 0;
   
 }
-html{
-  font-size: 62.5%;
-}
+
 body{
   font-family: 'Space Grotesk', sans-serif;
   line-height: 1.5;
- 
+ height: 100%;
 }
 .bottom-border{
   border-bottom: 2px solid black;
