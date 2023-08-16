@@ -7,10 +7,11 @@ import { FaEye } from "react-icons/fa";
 
 
 function SignUp() {
-  const {register,handleSubmit,getValues,formState:{errors,isSubmitting,isSubmitSuccessful}}=useForm()
+  const {register,handleSubmit,getValues,setValue,formState:{errors,isSubmitting,isSubmitSuccessful}}=useForm()
   const [showPassword,setShowPassword]=useState(false)
   const [step,setStep]=useState(1)
   const [step1Data,setStep1Data]=useState({})
+  const [level,setLevel]=useState("")
   function togglePasswordType(){
     setShowPassword(!showPassword)
   }
@@ -24,7 +25,7 @@ function SignUp() {
    }
    else{
     const allData={...step1Data,...data}
-    console.log(allData)
+    console.log('alldata',allData)
     try{
 
     }
@@ -41,8 +42,8 @@ function SignUp() {
   return (
     <section className='signup-container signInUp-container'>
       <div className='signup-steps'>
-        {step==1 &&<div className='signup-step1'></div>}
-        {step==2 && <div className='signup-step2'></div>}        
+        {<div className={`signup-step1 ${step===2 ? 'signup-step2' : ''}`}></div>}
+           
 
       </div>
        <h2>{step==1?"Let's get started!":"Tell us about yourself."}</h2>
@@ -50,7 +51,7 @@ function SignUp() {
       <form className='signup-form' onSubmit={handleSubmit(onSubmit)}>
         
         {step===1 &&
-       (<div className='step-1'>
+       (<div className='step-1-container'>
         <label htmlFor='firstName'> First Name
        <input {...register("firstName",{required:"firstName is required",minLength:{value:2,message:"min lenght is 2"}})} className='signup-input'type='text' id='firstName'/>
        <p className='error-message'>{errors.firstName?.message}</p>
@@ -74,21 +75,35 @@ function SignUp() {
        <p className='error-message'>{errors.password?.message}</p>
        </label> 
        <Button type='submit' text='Continue' classname='signup-btn'/>
+       <p className='have-acct'>Already have an account? <span>Sign In.</span></p>
+    
       </div>) }
   
   {step ===2 &&
-      (<div className='step-2'>
-        <label htmlFor='password3' className='signup-label'>Password
-       <div className='input-container'>
-       <input {...register("password3",{required:"password is required",minLength:{value:5,message:'min length 5 characters'}})}type={`${showPassword?"text":"password"}`} id='password' className='signUp-password'/>
-       <p className='icon-right' onClick={togglePasswordType}>{showPassword?<FaEye/>:<FaEyeSlash/>}</p>
-       </div>
-       <p className='error-message'>{errors.password3?.message}</p>
-       </label> 
-       <Button type='submit'/>
+      (<div className='step-2-container'>
+  <p className='step-2_title'>My player level is .....</p>     
+  <div className='step-2_options player-level'>      
+         
+  <input {...register('player_level')} type="radio" id="beginner" name="select" value="1" checked={level==='beginner'}/>
+  <label htmlFor="beginner">
+    <p onClick={()=>{setLevel('beginner');setValue('player_level', 'beginner')}}>Beginner</p>
+  </label>  
+     
+     
+  <input type="radio" onChange={() => setLevel('intermediate')} id="intermediate" name="select" value="1" checked={level==='intermediate'}/>
+  <label htmlFor="intermediate">
+    <p onClick={()=>{setLevel('intermediate');setValue('player_level', 'intermediate')}}>Intermediate</p>
+  </label>
+     
+  <input  type="radio" onChange={() => setLevel('advanced')} id="advanced" name="select" value="1" checked={level==='advanced'}/>
+  <label htmlFor="advanced">
+    <p onClick={()=>{setLevel('advanced');setValue('player_level', 'advanced')}}>Advanced</p>
+  </label> 
+  </div>
+
+       <Button type='submit' text='Submit'/>
       </div>)}
       </form>
-      <p className='have-acct'>Already have an account? <span>Sign In.</span></p>
      
     </section>
   )
