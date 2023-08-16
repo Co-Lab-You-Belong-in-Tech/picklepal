@@ -10,7 +10,8 @@
 }
 html{
   font-size: 62.5%;
-  height: 100vh;
+  height: 90vh;
+  overflow-y: hidden;
 }
 #root{
   background-color: var(--bg-light);
