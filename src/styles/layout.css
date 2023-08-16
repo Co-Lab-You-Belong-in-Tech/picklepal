@@ -1,6 +1,6 @@
 .app-layout{
     background-color: var(--bg-light);
-    min-height: 90vh;
+    max-height: 90vh;
     position: relative;
     display: flex;
     justify-content: center;
