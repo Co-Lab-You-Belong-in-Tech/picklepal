@@ -1,6 +1,7 @@
 .app-layout{
     background-color: var(--bg-light);
-    min-height: 100vh;
+    height: env(safe-area-inset-top, 0) + env(safe-area-inset-bottom, 0) + 100vh;
+ 
     position: relative;
     display: flex;
     justify-content: center;

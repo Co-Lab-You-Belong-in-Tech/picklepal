@@ -41,6 +41,7 @@ h2{
   font-weight: 700;
   font-size: 4rem;
   margin-bottom: 2rem;
+  text-align: center;
 }
 .error-message{
   color: red;
@@ -58,15 +59,18 @@ h2{
     border-bottom: 1px solid black;
 }
 }
-@media (max-width:600px){
+@media (max-width:650px){
     h2{
       font-size: 3rem;
+    }
+    h2{
+      font-size: 6vw;
     }
 }
 @media(max-width:425px){
   html{
     font-size: 50%;
   }
+
+ }
  
- 
-}

@@ -5,13 +5,17 @@
     background-color: var(--light-grey);
     margin-bottom: 2rem;
     width: 100%;
+    display: flex;
   
 }
-.signup-step1{
+.signup-step1,.signup-step2{
     width: 50%;
     height: 100%;
     background-color: var(--green);
     border-radius: 1rem;
+}
+.signup-step2{
+    width: 100%;
 }
 .signup-form{
     display: flex;
