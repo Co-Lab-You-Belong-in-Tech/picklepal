@@ -4,7 +4,7 @@ import { useForm} from "react-hook-form"
 import Button from '../components/Button'
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -18,7 +18,7 @@ function SignUp() {
     setShowPassword(!showPassword)
   }
  
-  function onSubmit(data){
+  async function onSubmit(data){
   if (step===1 && Object.keys(errors).length === 0){
        setStep1Data(getValues())
        setStep(2)
@@ -37,11 +37,16 @@ function SignUp() {
   const availability_day=all_days.filter((day)=>day != null)
  
   const allData={...step1Data,...data,availability_time,availability_day}
-  const { from_time, to_time, mon,tues,wed,thur,fri,sat,sun, ...filtereddata } = allData;
-    
-    
-    console.log(filtereddata)
+  const { from_time, to_time, mon,tues,wed,thur,fri,sat,sun, ...filteredData } = allData;
+  console.log(filteredData)
    
+  try{
+   const response=await axios.post("https://pickleball.cyclic.app/api/register",filteredData)
+   console.log(response)
+  }
+  catch(err){
+   console.warn(err)
+  }
    }
   }
   useEffect(() => {
@@ -94,20 +99,20 @@ function SignUp() {
   <p className='step-2_title'>My player level is .....</p>     
   <div className='step-2_options player-level'>      
          
-  <input {...register('Player_level')} type="radio" id="beginner" name="level" />
+  <input {...register('player_level')} type="radio" id="beginner" name="level" />
   <label htmlFor="beginner">
-    <p onClick={()=>{setValue('Player_level', 'beginner')}}>Beginner</p>
+    <p onClick={()=>{setValue('player_level', 'beginner')}}>Beginner</p>
   </label>  
      
      
   <input type="radio" name="level" id='intermediate' />
   <label htmlFor="intermediate">
-    <p onClick={()=>{setValue('Player_level', 'intermediate')}}>Intermediate</p>
+    <p onClick={()=>{setValue('player_level', 'intermediate')}}>Intermediate</p>
   </label>
      
   <input  type="radio"  id="advanced" name="level"  />
   <label htmlFor="advanced">
-    <p onClick={()=>{setValue('Player_level', 'advanced')}}>Advanced</p>
+    <p onClick={()=>{setValue('player_level', 'advanced')}}>Advanced</p>
   </label> 
   </div>
  
@@ -217,7 +222,7 @@ function SignUp() {
           
 
   </div>
-      <NavLink to='/profile'> <Button type='submit' text='Submit' issubmitting={isSubmitting}/></NavLink>
+       <Button type='submit' text='Submit' issubmitting={isSubmitting}/>
       </div>)}
       </form>
      

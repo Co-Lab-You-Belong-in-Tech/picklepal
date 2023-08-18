@@ -1,0 +1,14 @@
+.profile-section_content{
+    width: 100%;
+    border: 2px solid var(--black);
+    margin-bottom: 2rem;
+
+}
+.profile-details_top{
+    height: 45%;
+    background-color: var(--profile-green);
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}

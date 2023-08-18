@@ -4,7 +4,7 @@ import Login from './Login'
 function AuthenticatedPage({children}) {
     const[isAuth,setIsAuth]=useState(true)
   return (
-    <div>
+    <div className='auth-page'>
       {isAuth?children:<Login/>}
     </div>
   )

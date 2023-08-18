@@ -119,7 +119,7 @@ input{
         padding-left: 2rem;
     }
     .app-layout{
-   
+        padding-top: 0;
         align-items: center;
     }
     .right-ball{  

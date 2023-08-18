@@ -7,6 +7,7 @@
   --black:#212121;
   --grey:#8B8B8B;
   --light-grey:#D9D9D9;
+  --profile-green:#91CB91;
   
   
 
@@ -48,8 +49,32 @@ h2{
   margin-bottom: 2rem;
   text-align: center;
 }
+h3{
+font-weight: 700;
+font-size: 3rem;
+margin-bottom: 2rem;
+}
 .error-message{
   color: red;
+}
+.auth-page{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.width{
+  max-width: 35rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+.height{
+  height: 55vh;
 }
 
 @media(max-width:725px){
