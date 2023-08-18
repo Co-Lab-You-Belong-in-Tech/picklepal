@@ -11,3 +11,21 @@ button{
 .button_signup{
     padding:1em 1.5em;
 }
+.spinner{
+    width: 3rem;
+    height: 3rem;
+
+    border-radius: 50%;
+    border: 3px solid black;
+    border-top: 3px solid white ;
+    animation: spinner 0.5s linear infinite;
+    
+}
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

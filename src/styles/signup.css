@@ -8,7 +8,7 @@
   }
   .increase-width.signup-container{
   width: 90%;
-  max-width: 70rem;
+  max-width: 75rem;
  
   }
 .signup-steps{
@@ -82,9 +82,8 @@ margin-top: 1rem;
     width: 100%;
     margin-top: 3rem;
 }
-.step-2-container label{
+.step-2-container label,.step-2-container select {
     border: 1px solid var(--black);
-    margin-right: 1rem;
     cursor: pointer;
     outline: none;
     background-color: var(--white-smoke);
@@ -94,6 +93,12 @@ margin-top: 1rem;
 
     
 }
+.step-2-container select{
+height: 4rem;
+font-size: 1.3rem;
+
+}
+
 .step-2-container label>p{
     margin-bottom: 0;
     font-size: 1.5rem;
@@ -112,11 +117,23 @@ input[type="radio"]:checked + label {
     display: flex;
     margin-bottom: 2rem;
     align-self: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
   
 }
+.step-2_options label{
+flex: 0 1 ;
 
+}
+ 
+@media (max-width:625px){
+    .signup-steps{
+        width: 60%;
+    }
+}
 @media(max-width:425px){
     .step-2-container label{
         padding:.5em 1em ;
     }
+   
 }
