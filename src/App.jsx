@@ -6,12 +6,14 @@ import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
 import Match from './pages/Match'
 import Courts from './pages/Courts'
+import Login from './components/Login'
 
 function App() {
   const router=createBrowserRouter([
     {path:"/",element:<Home/>},
     {element:<AppLayout/>,children:[
       {path:"signup" ,element:<SignUp/>},
+      {path:"login" ,element:<Login/>},
       {path:"profile" ,element:<Profile/>} ,
       {path:"match" ,element:<Match/>},
       {path:"courts" ,element:<Courts/>}

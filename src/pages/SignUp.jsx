@@ -4,6 +4,7 @@ import { useForm} from "react-hook-form"
 import Button from '../components/Button'
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -216,7 +217,7 @@ function SignUp() {
           
 
   </div>
-       <Button type='submit' text='Submit' issubmitting={isSubmitting}/>
+      <NavLink to='/profile'> <Button type='submit' text='Submit' issubmitting={isSubmitting}/></NavLink>
       </div>)}
       </form>
      

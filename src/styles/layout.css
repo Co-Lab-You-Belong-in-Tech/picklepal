@@ -59,10 +59,11 @@ nav ul a,nav .mobile-ul a{
     color: var(--black);
    
 }
-ul a.active{
+a.current-active{
     text-decoration: underline;
     text-underline-offset: 2px;
     text-decoration-color: var(--grey);
+ 
     
 }
 

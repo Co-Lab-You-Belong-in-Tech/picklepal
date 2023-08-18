@@ -5,6 +5,7 @@ import logo from '../assets/images/logo.svg'
 import {BsList} from "react-icons/bs";
 import pickleleft from '../assets/images/pickballeft.svg'
 import pickleright from '../assets/images/pickbalright.svg'
+import ProtectedRoute from '../components/ProtectedRoute';
 
 
 function AppLayout() {
@@ -23,21 +24,22 @@ function AppLayout() {
   return (
     <div className='app-layout'>
       <nav className={`${menu?'':"bottom-border"}`}>
-        <div className='logo-container'><img src={logo} alt='picklepals logo' className='nav-logo'/></div>
+        <div className='logo-container'><NavLink to='/'><img src={logo} alt='picklepals logo' className='nav-logo'/></NavLink></div>
         <ul className='desktop-ul'>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="profile">Profile</NavLink>
-            <NavLink to='match'>Match</NavLink>
-            <NavLink to='courts'>Courts</NavLink>
+            <ProtectedRoute to="/profile">Profile</ProtectedRoute>
+            <ProtectedRoute to="/match">Match</ProtectedRoute>
+            <ProtectedRoute to="/courts">Courts</ProtectedRoute>
+        
         </ul>
         {/* MOBILE HARMUBURGER MENU */}
         <div className='mobile-hamburger-menu'>
         <BsList style={iconStyles}onClick={toggleMenu} />   
         {menu&&<ul className={`mobile-ul ${menu?'bottom-border':""}`}>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="profile">Profile</NavLink>
-            <NavLink to="match">Match</NavLink>
-            <NavLink to="courts">Courts</NavLink>
+            <ProtectedRoute to="/profile">Profile</ProtectedRoute>
+            <ProtectedRoute to="/match">Match</ProtectedRoute>
+            <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         </ul>}
         </div>
       </nav>
