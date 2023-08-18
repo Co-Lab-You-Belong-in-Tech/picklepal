@@ -13,12 +13,12 @@
 }
 html{
   font-size: 62.5%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 #root{
   background-color: var(--bg-light);
   max-width: 100%;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 
