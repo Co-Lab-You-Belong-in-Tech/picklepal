@@ -5,6 +5,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--white-smoke);
+    background-image: url('../assets/images/picklepalsbg.jpeg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
 }
 .home_container{
     display: flex;
