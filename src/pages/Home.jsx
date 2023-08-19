@@ -11,7 +11,7 @@ function Home() {
       <h1>Effortless pickleball matchmaking in Toronto. ✨</h1>
       <p className='home_hero-text'>Find a partner or opponent, locate a court, and build a profile to simply enjoy your pickleball passion.</p>
       <NavLink to='/signup'><Button type='submit' text='Sign Up' classname='button_signup'/></NavLink>
-      <p className='have-acct'>Already have an account? <span>Sign In.</span></p>
+      <p className='have-acct'>Already have an account? <span className='home-login'><NavLink to='/login'>Sign In.</NavLink></span></p>
       </div>
     </section>
   )

@@ -1,14 +1,75 @@
-.profile-section_content{
+.profile-content-container{
     width: 100%;
     border: 2px solid var(--black);
     margin-bottom: 2rem;
+    font-size: 1.5rem;
+   
 
 }
-.profile-details_top{
-    height: 45%;
+.profile-details{
+    padding: 3rem 3rem 4rem 3rem;
+}
+.profile-top-section {
+    height: 18rem;
     background-color: var(--profile-green);
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px 0 #21212192;
+    
+}
+.profile-name-section{
+    font-size: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.profile-name-section p{
+    margin: 0;
+    padding: 0;
+}
+.profile-name-section .username{
+    font-weight: 700;
+    margin-top: 2rem;
+}
+.user-location{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.user-location img{
+    width: 2rem;
+    margin-right: .5rem;
+}
+.profile-edit-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.profile-edit-container div{
+width: 5rem;
+height: 5rem;
+border-radius: 50%;
+background-color: #fff;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.profile-edit-container img{
+    width: 2.5rem;
 }
 .btn-container{
     display: flex;
     justify-content: center;
+}
+.profile-bottom-section p{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem; 
+    
+}
+.profile-bottom-section img{
+width: 2rem;
+margin-right: 1.5rem;
 }

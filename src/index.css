@@ -14,12 +14,12 @@
 }
 html{
   font-size: 62.5%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 #root{
   background-color: var(--bg-light);
   max-width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 
@@ -65,17 +65,13 @@ margin-bottom: 2rem;
   
 }
 .width{
-  max-width: 35rem;
+  max-width: 40rem;
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 }
-.height{
-  height: 55vh;
-}
+
 
 @media(max-width:725px){
   .bottom-border{

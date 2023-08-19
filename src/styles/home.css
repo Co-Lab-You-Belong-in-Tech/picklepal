@@ -44,6 +44,10 @@ h1{
     text-underline-offset: 3px;
     font-weight: bold;
 }
+.have-acct .home-login a{
+    color: var(--white-smoke);
+   
+}
 @media(max-width:425px){
    
     .home-logo{

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Login from './Login'
+import Login from '../pages/Login'
+
 
 function AuthenticatedPage({children}) {
     const[isAuth,setIsAuth]=useState(true)

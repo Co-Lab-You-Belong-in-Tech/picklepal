@@ -1,13 +1,14 @@
 .app-layout{
     background-color: var(--bg-light);
-    height: 100%;
-    /* background-color: green; */
+    min-height: 100vh;
+  
     position: relative;
     display: flex;
     justify-content: center;
     z-index: 1;
     padding-top:12rem;
-    /* padding-bottom: 3rem; */
+  
+
 
 }
 .logo-container{

@@ -6,8 +6,9 @@ import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
 import Match from './pages/Match'
 import Courts from './pages/Courts'
-import Login from './components/Login'
+
 import Invites from "./components/Invites"
+import Login from './pages/Login'
 
 function App() {
   const router=createBrowserRouter([
