@@ -6,21 +6,30 @@ import Button from '../components/Button'
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
+
 function Login() {
   const {register,handleSubmit,formState:{errors,isSubmitting}}=useForm()
   const [showPassword,setShowPassword]=useState(false)
+  const [error,setError]=useState('')
+  const navigateTo=useNavigate()
   function togglePasswordType(){
     setShowPassword(!showPassword)
   }
   async function login(data){
     console.log(data)
     try{
-      const response=await axios.post("https://pickleball.cyclic.app/api/register",data)
+      const response=await axios.post("https://pickleball.cyclic.app/api/login",data)
       console.log(response)
+      const token=response.data.data.auth_token
+      sessionStorage.setItem('auth_token',token)
+      navigateTo("/profile")
+
      }
      catch(err){
-      console.warn(err)
+      console.warn(err.response.data.msg)
+      setError(err.response.data.msg)
      }
       
      
@@ -45,6 +54,7 @@ function Login() {
        <p className='error-message'>{errors.password?.message}</p>
        </label> 
        <Button type='submit' text='Continue' classname='login-btn' issubmitting={isSubmitting}/>
+       <p className='error-message' style={{'fontSize':'1.5rem','marginTop':'1rem'}}>{error}</p>
  
     </form>
    

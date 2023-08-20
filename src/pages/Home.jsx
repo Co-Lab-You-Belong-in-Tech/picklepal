@@ -3,7 +3,12 @@ import '../styles/home.css'
 import logo from '../assets/images/logo.svg'
 import Button from '../components/Button'
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { authenticate } from '../redux/slices/userSlice'
 function Home() {
+  const dispatch=useDispatch()
+  sessionStorage.clear();
+  dispatch(authenticate(false));
   return (
     <section className='home'>
       <div className='home_container'>

@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 function SignUp() {
   const {register,handleSubmit,getValues,setValue,formState:{errors,isSubmitting}}=useForm()
   const [showPassword,setShowPassword]=useState(false)
+  const [error,setError]=useState("")
   const [step,setStep]=useState(1)
   const [step1Data,setStep1Data]=useState({})
 
@@ -36,17 +37,19 @@ function SignUp() {
     
   const all_days=[data.mon,data.tues,data.wed,data.thur,data.fri,data.sat,data.sun]
   const availability_day=all_days.filter((day)=>day != null)
- 
   const allData={...step1Data,...data,availability_time,availability_day}
   const { from_time, to_time, mon,tues,wed,thur,fri,sat,sun, ...filteredData } = allData;
   console.log(filteredData)
    
   try{
-   const response=await axios.post("https://pickleball.cyclic.app/api/register",filteredData)
+   const response=await axios.post("https://pickleball-o3oe.onrender.com/api/register",filteredData)
    console.log(response)
+   const token=response.data.auth_token
+   sessionStorage.setItem('auth_token',token)
   }
   catch(err){
-   console.warn(err)
+   console.warn(err.response.data.msg)
+   setError(err.response.data.msg)
   }
    }
   }
@@ -223,6 +226,7 @@ function SignUp() {
           
 
   </div>
+    <p className='error-message' style={{"fontSize":"1.5rem"}}>{error}</p>
        <Button type='submit' text='Submit' issubmitting={isSubmitting}/>
       </div>)}
       </form>

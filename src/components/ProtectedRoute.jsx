@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import "../styles/layout.css"
+import { useSelector } from 'react-redux'
 
 function ProtectedRoute({children,to}) {
-const isAuth=true;
+const isAuth=useSelector((state)=>state.user.isAuth)
 const location=useLocation()
 const isActive=location.pathname===to
 console.log(isActive)
