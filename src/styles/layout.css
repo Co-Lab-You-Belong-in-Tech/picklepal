@@ -123,9 +123,14 @@ input{
         padding-top: 0;
         align-items: center;
     }
-    .right-ball,.left-ball{  
+    .right-ball{  
         width:  30%;
         height: 25%;
+    }
+    .left-ball{
+        width: 25%;
+        height: 25%;
+        top:9rem
     }
 
     
