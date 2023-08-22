@@ -1,5 +1,6 @@
 import React from 'react'
-import '../styles/InviteMatch.css'
+import '../styles/inviteMatch.css'
+
 import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { displayModal } from '../redux/slices/userSlice'

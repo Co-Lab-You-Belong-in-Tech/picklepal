@@ -11,7 +11,6 @@ import Invites from "./components/Invites"
 import Login from './pages/Login'
 import MatchFound from './components/MatchFound'
 import InviteMatch from './components/InviteMatch'
-
 function App() {
   const router=createBrowserRouter([
     {path:"/",element:<Home/>},
