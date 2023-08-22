@@ -1,8 +1,9 @@
 import React from 'react'
 import locationIcon from "../assets/images/location.svg"
 import "../styles/profile.css"
+import { NavLink } from 'react-router-dom'
 
-function ProfileTopSection({name,location,icon1,icon2}) {
+function ProfileTopSection({name,location,icon1,icon2,onclickIcon1,toIcon1}) {
   return (
    <>
     <div className='profile-top-section profile-details'>
@@ -11,7 +12,7 @@ function ProfileTopSection({name,location,icon1,icon2}) {
      <p className='user-location'><img src={locationIcon} alt='location icon' className='location-icon'/>{location}</p>
     </div>
     <div className='profile-edit-container'>
-   <div><img src={icon1} alt= "profile icon"/></div>
+    <NavLink to={toIcon1}><div onClick={onclickIcon1}><img src={icon1} alt= "profile icon"/></div></NavLink>
    <div><img src={icon2} alt="profile icon"/></div>
 
     </div>

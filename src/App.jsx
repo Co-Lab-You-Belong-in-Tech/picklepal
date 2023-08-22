@@ -9,6 +9,8 @@ import Courts from './pages/Courts'
 
 import Invites from "./components/Invites"
 import Login from './pages/Login'
+import MatchFound from './components/MatchFound'
+import InviteMatch from './components/InviteMatch'
 
 function App() {
   const router=createBrowserRouter([
@@ -18,7 +20,9 @@ function App() {
       {path:"login" ,element:<Login/>},
       {path:"profile" ,element:<Profile/>,
       children:[{path:"invites",element:<Invites/>}]} ,
-      {path:"match" ,element:<Match/>},
+      {path:"match" ,element:<Match/>,
+      children:[{path:"matchFound",element:<MatchFound/>},
+                {path:'inviteMatch',element:<InviteMatch/>}]},
       {path:"courts" ,element:<Courts/>}
     ]}
   ])

@@ -62,7 +62,7 @@ function Login() {
  
     </form>
    
-      <p className='have-acct'>Don’t have an account yet? <span><NavLink to='/signup'>Sign Up.</NavLink></span></p>
+      <p className='have-acct'>Don’t have an account yet? <span className='signup'><NavLink to='/signup'>Sign Up.</NavLink></span></p>
     
     </section>
   )

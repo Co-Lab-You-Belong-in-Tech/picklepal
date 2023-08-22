@@ -94,7 +94,7 @@ function SignUp() {
        <p className='error-message'>{errors.password?.message}</p>
        </label> 
        <Button type='submit' text='Continue' classname='signup-btn'/>
-       <p className='have-acct'>Already have an account? <span><NavLink to='/login'>Sign In.</NavLink></span></p>
+       <p className='have-acct'>Already have an account? <span className='login'><NavLink to='/login'>Sign In.</NavLink></span></p>
     
       </div>) }
   

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import "../styles/layout.css"
-import logo from '../assets/images/logo.svg'
+
 import {BsList} from "react-icons/bs";
 import pickleleft from '../assets/images/pickballeft.svg'
 import pickleright from '../assets/images/pickbalright.svg'
 import ProtectedRoute from '../components/ProtectedRoute';
+import InviteModal from '../components/InviteModal';
 
 
 function AppLayout() {
@@ -28,7 +29,7 @@ function AppLayout() {
         <ul className='desktop-ul'>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
-            <ProtectedRoute to="/match">Match</ProtectedRoute>
+            <ProtectedRoute to="/match/matchFound">Match</ProtectedRoute>
             <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         
         </ul>
@@ -43,7 +44,7 @@ function AppLayout() {
         </ul>}
         </div>
       </nav>
-
+<InviteModal/>
    <Outlet/>
     <div><img src={pickleleft} alt='pickleball black illustration' className='left-ball ball'/></div> 
     <div><img src={pickleright} alt='pickleball black illustration' className='right-ball ball'/></div> 

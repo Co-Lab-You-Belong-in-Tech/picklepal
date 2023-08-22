@@ -14,3 +14,8 @@ margin-bottom: 2rem;
 .login-container h2{
     margin-bottom: 3rem;
 }
+.have-acct .signup a,.have-acct .login a{
+    color: var(--black);
+
+   
+}

@@ -49,8 +49,9 @@ h1{
     text-underline-offset: 3px;
     font-weight: bold;
 }
-.have-acct .home-login a{
+.have-acct span a{
     color: var(--white-smoke);
+    font-size: 1.5rem;
    
 }
 @media(max-width:425px){
