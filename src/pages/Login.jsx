@@ -8,12 +8,15 @@ import { FaEye } from "react-icons/fa";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { authenticate } from '../redux/slices/userSlice'
 
 function Login() {
   const {register,handleSubmit,formState:{errors,isSubmitting}}=useForm()
   const [showPassword,setShowPassword]=useState(false)
   const [error,setError]=useState('')
   const navigateTo=useNavigate()
+  const dispatch=useDispatch()
   function togglePasswordType(){
     setShowPassword(!showPassword)
   }
@@ -25,6 +28,7 @@ function Login() {
       const token=response.data.data.auth_token
       sessionStorage.setItem('auth_token',token)
       navigateTo("/profile")
+      dispatch(authenticate(true));
 
      }
      catch(err){

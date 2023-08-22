@@ -22,9 +22,14 @@
 }
 .home-logo{
     width: 50%;
-    height: auto;
     margin-bottom: 4rem;
+    color: var(--light-green);
+    font-family: 'Modak', cursive;
+    font-size: 7vw;
+    -webkit-text-stroke: 5px var(--black); 
+   
 }
+
 h1{
     font-weight: 700;
     font-size: 4rem;
@@ -49,10 +54,14 @@ h1{
    
 }
 @media(max-width:425px){
-   
     .home-logo{
-        width: 70%;
+        width: 100%;
+        margin-bottom: 4rem;
+        font-size: 10vw;
+        -webkit-text-stroke: 3px var(--black); 
+        
     }
+  
     h1{
         font-size: 2.5rem;
     }

@@ -12,7 +12,8 @@ function Home() {
   return (
     <section className='home'>
       <div className='home_container'>
-      <img src={logo} alt='picklepals logo' className='home-logo'/>
+      <p  className='logo home-logo'>Pickle Pals</p>
+       
       <h1>Effortless pickleball matchmaking in Toronto. ✨</h1>
       <p className='home_hero-text'>Find a partner or opponent, locate a court, and build a profile to simply enjoy your pickleball passion.</p>
       <NavLink to='/signup'><Button type='submit' text='Sign Up' classname='button_signup'/></NavLink>

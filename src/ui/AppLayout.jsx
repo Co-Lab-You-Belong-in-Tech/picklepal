@@ -24,7 +24,7 @@ function AppLayout() {
   return (
     <div className='app-layout'>
       <nav className={`${menu?'':"bottom-border"}`}>
-        <div className='logo-container'><NavLink to='/'><img src={logo} alt='picklepals logo' className='nav-logo'/></NavLink></div>
+        <p  className='logo nav-logo'><NavLink to='/'>Pickle Pals</NavLink></p>
         <ul className='desktop-ul'>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
