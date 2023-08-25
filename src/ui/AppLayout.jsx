@@ -6,7 +6,8 @@ import {BsList} from "react-icons/bs";
 import pickleleft from '../assets/images/pickballeft.svg'
 import pickleright from '../assets/images/pickbalright.svg'
 import ProtectedRoute from '../components/ProtectedRoute';
-import InviteModal from '../components/InviteModal';
+import InviteSentModal from '../components/InviteSentModal';
+import InviteAcceptedModal from '../components/InviteAcceptedModal';
 
 
 function AppLayout() {
@@ -44,7 +45,8 @@ function AppLayout() {
         </ul>}
         </div>
       </nav>
-<InviteModal/>
+<InviteSentModal/>
+<InviteAcceptedModal/>
    <Outlet/>
     <div><img src={pickleleft} alt='pickleball black illustration' className='left-ball ball'/></div> 
     <div><img src={pickleright} alt='pickleball black illustration' className='right-ball ball'/></div> 

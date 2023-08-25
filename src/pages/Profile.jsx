@@ -20,18 +20,14 @@ function Profile() {
   return (
     <AuthenticatedPage>
     <section className='profile-section width'>
-      <h3>Profile</h3>
-
+    <h3>Profile</h3>
     <div className='profile-content-container height'>
     <ProfileTopSection name="Andrea" location="North End, Toronto, CA" icon1={settings} icon2={pen}/>
     <div className='profile-bottom-section profile-details'>
     {showInviteBtn?<ProfileBottomSection level='Beginner' availability='Thursday, Saturday, Sunday' time='09:00 - 12:00' seekingType='Partner, Opponent'/>:<Invites/>}
     </div>
     </div>
-
-
-    <Button type='text' text={showInviteBtn?'Invites':'Return'} onclick={toggleBtn}/>
-     
+    <Button type='text' text={showInviteBtn?'Invites':'Return'} onclick={toggleBtn}/> 
     </section>
     </AuthenticatedPage> 
   )

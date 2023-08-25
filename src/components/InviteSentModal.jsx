@@ -6,7 +6,7 @@ import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import { displayModal } from '../redux/slices/userSlice';
 
-function InviteModal() {
+function InviteSentModal() {
   const isModalOpen=useSelector((state)=>(state.user.isModalOpen))
   ReactModal.setAppElement('#root')
   const navigate=useNavigate()
@@ -28,4 +28,4 @@ function InviteModal() {
   )
 }
 
-export default InviteModal
+export default InviteSentModal

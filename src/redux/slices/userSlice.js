@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
     isAuth:false,
-    isModalOpen:false
+    isModalOpen:false,
+    isInviteAccepted:false
 }
 
 export const userSlice =createSlice({
@@ -15,9 +16,12 @@ export const userSlice =createSlice({
         },
         displayModal:(state,action)=>{
             state.isModalOpen=action.payload
+        },
+        displayAcceptedModal:(state,action)=>{
+            state.isInviteAccepted=action.payload
         }
     }
 })
 
-export const {authenticate,displayModal}=userSlice.actions;
+export const {authenticate,displayModal,displayAcceptedModal}=userSlice.actions;
 export default userSlice.reducer;
