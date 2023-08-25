@@ -39,7 +39,7 @@ function AppLayout() {
         {menu&&<ul className={`mobile-ul ${menu?'bottom-border':""}`}>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
-            <ProtectedRoute to="/match">Match</ProtectedRoute>
+            <ProtectedRoute to="/match/matchFound">Match</ProtectedRoute>
             <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         </ul>}
         </div>
