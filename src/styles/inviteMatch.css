@@ -1,8 +1,8 @@
 .invite-match-container{
-width: 60rem;
-max-width: 90%;
+
 border: 2px solid var(--black);
 padding: 3rem;
+
 }
 .invite-match-container h3{
     text-align: center;
@@ -11,9 +11,29 @@ padding: 3rem;
     width: 100%;
      display: flex;
     flex-direction: column;
+    font-size: 1.5rem;
 
 }
 .invitation-form .invite_btn{
     align-self: center;
     margin-top: 3rem;
+}
+
+.invitation-form input,.invitation-form select{
+    width: 50%;
+    margin-bottom: 1rem;
+    
+}
+.invitation-form label{
+    border: 1px solid var(--black);
+    cursor: pointer;
+    outline: none;
+    background-color: var(--white-smoke);
+    border-radius: 1.5rem;
+    padding:.5em 2em ;
+    text-align: center;
+
+}
+.invitation-form label p{
+    margin-bottom: 0;
 }

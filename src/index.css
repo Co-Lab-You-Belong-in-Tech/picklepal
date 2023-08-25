@@ -30,6 +30,33 @@ html{
   padding: 0;
   
 }
+select{
+  border: 1px solid var(--black);
+  cursor: pointer;
+  outline: none;
+  background-color: var(--white-smoke);
+  border-radius: 1.5rem;
+  padding:.5em 2em ;
+  text-align: center;
+}
+input[type="radio"]{
+  display: none; 
+}
+input[type="radio"]:checked + label {
+ background-color: var(--light-green); /* Change this to your desired background color */
+}
+.seeking-type{
+  display: flex;
+  margin-bottom: 2rem;
+  align-self: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+}
+.seeking-type label{
+flex: 0 1 ;
+
+}
 
 body{
   font-family: 'Space Grotesk', sans-serif;
