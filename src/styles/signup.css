@@ -109,8 +109,16 @@ font-size: 1.3rem;
 input[type="radio"]{
     display: none; 
 }
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + label,input[type="checkbox"]:checked + label {
    background-color: var(--light-green); /* Change this to your desired background color */
+}
+.checkbox-label{
+    position: relative;
+}
+.checkbox-label input{
+    position: absolute;
+    opacity: 0;
+    
 }
 .step-2_title{
     font-size: 2rem;

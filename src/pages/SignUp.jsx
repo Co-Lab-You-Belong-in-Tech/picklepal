@@ -5,16 +5,42 @@ import Button from '../components/Button'
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 
 function SignUp() {
-  const {register,handleSubmit,getValues,setValue,formState:{errors,isSubmitting}}=useForm()
+  const {register,handleSubmit,getValues,watch,setValue,formState:{errors,isSubmitting}}=useForm()
   const [showPassword,setShowPassword]=useState(false)
   const [error,setError]=useState("")
   const [step,setStep]=useState(1)
   const [step1Data,setStep1Data]=useState({})
+  const navigate=useNavigate()
+
+
+  const handleRadioChange = (value) => {
+    const seeking = watch('seeking_type') || []; // Ensure seeking is an array
+    
+    if (seeking.includes(value)) {
+      const newValue = seeking.filter(option => option !== value);
+      console.log(value)
+      setValue('seeking_type', newValue);
+    } else {
+      setValue('seeking_type', [...seeking, value]);
+    }
+  };
+  const handleRadioChangeAvail = (value) => {
+    const availability = watch('availability_day') || []; 
+    
+    if (availability.includes(value)) {
+      const newValue =availability.filter(option => option !== value);
+      console.log(value)
+      setValue('availability_day', newValue);
+    } else {
+      setValue('availability_day', [...availability, value]);
+    }
+  };
+
 
   function togglePasswordType(){
     setShowPassword(!showPassword)
@@ -34,25 +60,29 @@ function SignUp() {
       start,
       end
     }
-    
-  const all_days=[data.mon,data.tues,data.wed,data.thur,data.fri,data.sat,data.sun]
-  const availability_day=all_days.filter((day)=>day != null)
-  const allData={...step1Data,...data,availability_time,availability_day}
-  const { from_time, to_time, mon,tues,wed,thur,fri,sat,sun, ...filteredData } = allData;
+
+
+  
+  
+  const allData={...step1Data,...data,availability_time}
+  const { from_time, to_time,  ...filteredData } = allData;
   console.log(filteredData)
-   
+
+ 
   try{
+   setError('') 
    const response=await axios.post("https://pickleball-o3oe.onrender.com/api/register",filteredData)
    console.log(response)
    const token=response.data.auth_token
    sessionStorage.setItem('auth_token',token)
+   navigate('/profile')
   }
   catch(err){
    console.warn(err.response.data.msg)
    setError(err.response.data.msg)
   }
+    }
    }
-  }
   useEffect(() => {
     console.log('step1Data changed:', step1Data);
   }, [step1Data]);
@@ -121,35 +151,54 @@ function SignUp() {
   </div>
  
   <p className='step-2_title'>I’m available on...</p>
-  <div className='step-2_options availability'>      
-         <input {...register('mon')} type="radio" id="mon" value='monday' />
-         <label htmlFor="mon">
+  <div className='step-2_options availability'>
+        <div className='checkbox-label'>     
+         <input {...register('availability_day')} type="checkbox" id="mon" value='monday' />
+         <label htmlFor="mon" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p>Mon.</p>
-         </label>  
-         <input  {...register('tues')} type="radio" id="tues" value='tuesday'  />
-         <label htmlFor="tues">
+         </label> 
+         </div> 
+
+         <div className='checkbox-label'>
+         <input  {...register('availability_day')} type="checkbox" id="tues" value='tuesday'  />
+         <label htmlFor="tues" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p >Tues.</p>
          </label>
-         <input {...register('wed')}  type="radio" id="wed" value='wednesday' />
-         <label htmlFor="wed">
+         </div>
+
+         <div className='checkbox-label'>
+         <input {...register('availability_day')} type="checkbox" id="wed" value='wednesday' />
+         <label htmlFor="wed" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p >Wed.</p>
          </label>  
-         <input  {...register('thur')} type="radio" id="thurs" value='thursday' />
-         <label htmlFor="thurs">
+         </div>
+
+         <div className='checkbox-label'>
+         <input  {...register('availability_day')} type="checkbox" id="thurs" value='thursday' />
+         <label htmlFor="thurs" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p>Thurs.</p>
          </label>
-         <input  {...register('fri')}  type="radio" id="fri" value='friday'  />
-         <label htmlFor="fri">
+         </div>
+
+         <div className='checkbox-label'>
+         <input  {...register('availability_day')} type="checkbox"  id="fri" value='friday'  />
+         <label htmlFor="fri" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p >Fri.</p>
          </label>
-         <input {...register('sat')}  type="radio" id="sat" value='saturday'  />
-         <label htmlFor="sat">
+         </div>
+
+         <div className='checkbox-label'>
+         <input {...register('availability_day')} type="checkbox"   id="sat" value='saturday'  />
+         <label htmlFor="sat" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p >Sat.</p>
          </label> 
-         <input  {...register('sun')}  type="radio" id="sun" value='sunday' />
-         <label htmlFor="sun">
+         </div>
+         <div className='checkbox-label'>
+         <input {...register('availability_day')} type="checkbox" id="sun" value='sunday' />
+         <label htmlFor="sun" onClick={() => handleRadioChangeAvail('partner')} className="checkbox-text">
            <p>Sun.</p>
          </label>
+         </div>
   </div>
   <p className='step-2_title'>from... to...</p>
   <div className='step-2_options time'>      
@@ -214,16 +263,18 @@ function SignUp() {
   <p className='step-2_title'>Seeking...</p>
   <div className='step-2_options seeking-type'>      
          
-        
-         <input {...register("seeking_type")} type="radio" id="partner" name='seeking_type' value="partner"/>
-         <label htmlFor="partner" onClick={()=>{setValue('seeking_type', 'partner')}}>
-           <p>Partner</p>
-         </label>
-         <input  type="radio" id="opponent" name='seeking_type' value="opponent"/>
-         <label htmlFor="opponent" onClick={()=>{setValue('seeking_type', 'opponent')}}>
-           <p>Opponent</p>
-         </label>
-          
+       <div className="checkbox-label">
+       <input {...register('seeking_type')} type="checkbox" id="partner" value="partner" />
+      <label htmlFor="partner" onClick={() => handleRadioChange('partner')} className="checkbox-text">
+        <p>Partner</p>
+      </label>
+      </div>
+      <div className="checkbox-label">
+      <input {...register('seeking_type')} type="checkbox" id="opponent" value="opponent" />
+      <label htmlFor="opponent" onClick={() => handleRadioChange('opponent')}className="checkbox-text">
+        <p>Opponent</p>
+      </label>
+      </div>
 
   </div>
     <p className='error-message' style={{"fontSize":"1.5rem"}}>{error}</p>
