@@ -34,8 +34,6 @@ function MatchFound() {
         };
   
         const response = await axios.get('https:pickleball-o3oe.onrender.com/api/getplayers', config);
-        // Process the response or set state here if needed
-        // console.log(response.data.data);
         const matchData=response.data.data
         const matchList=Object.entries(matchData)
         const currentMatch=matchList[count][1]
@@ -47,7 +45,7 @@ function MatchFound() {
         sessionStorage.setItem('dates', JSON.stringify(currentMatch.available_dates));
         sessionStorage.setItem('invitee_id',(currentMatch._id));
     
-        console.log(currentMatch)
+        console.log(currentMatch.player_pickleball.level)
   
       } catch (err) {
         console.warn(err);
@@ -57,11 +55,6 @@ function MatchFound() {
     fetchData(); // Call the async function
   }, [count]);
   
-
-
-
-    
-     
 
 
   function getNextMatch() {
