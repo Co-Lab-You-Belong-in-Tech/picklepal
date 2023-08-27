@@ -7,22 +7,31 @@ import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { displayModal } from '../redux/slices/userSlice'
 
-function InviteMatch() {
+function InviteMatch({availability_dates}) {
   const dispatch=useDispatch()
+
+  console.log(availability_dates)
   
   function openModal(e){
     e.preventDefault()
     dispatch(displayModal(true))
-    console.log('jjj')
+
   }
   const isModalOpen=useSelector((state)=>(state.user.isModalOpen))
-  console.log('openModal'+ isModalOpen)
+ const dateObject=availability_dates[0]
+  console.log(dateObject)
+  
   return (
     <div className='invite-match-container'>
       <h3>Invite</h3>
       <form className='invitation-form' onSubmit={openModal}>
         <p>Please choose a scheduled date within the next two weeks </p>
-        <input type='date'/>
+        <select className="time-dropdown">
+        {availability_dates.map((dates)=>{
+          const date=Object.keys(dates)[0]
+          return <option value={date} key={date}>{date}</option> 
+        })}
+        </select>
         
         
         <p>Starting at ....</p>

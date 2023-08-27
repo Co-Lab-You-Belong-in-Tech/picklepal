@@ -8,12 +8,18 @@ import pickleright from '../assets/images/pickbalright.svg'
 import ProtectedRoute from '../components/ProtectedRoute';
 import InviteSentModal from '../components/InviteSentModal';
 import InviteAcceptedModal from '../components/InviteAcceptedModal';
+import { useDispatch } from 'react-redux';
+import { inviteMatch } from '../redux/slices/userSlice';
 
 
 function AppLayout() {
   const [menu,setMenu]=useState(false)
+  const dispatch=useDispatch();
   function toggleMenu(){
   setMenu(!menu)
+  }
+  function closeInvite(){
+  dispatch(inviteMatch(false))
   }
   
   const iconStyles = {
@@ -30,7 +36,7 @@ function AppLayout() {
         <ul className='desktop-ul'>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
-            <ProtectedRoute to="/match/matchFound">Match</ProtectedRoute>
+            <ProtectedRoute to="/match/matchFound"><p onClick={closeInvite}>Match</p></ProtectedRoute>
             <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         
         </ul>
@@ -40,7 +46,7 @@ function AppLayout() {
         {menu&&<ul className={`mobile-ul ${menu?'bottom-border':""}`}>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
-            <ProtectedRoute to="/match/matchFound">Match</ProtectedRoute>
+            <ProtectedRoute to="/match/matchFound"><p onClick={closeInvite}>Match</p></ProtectedRoute>
             <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         </ul>}
         </div>

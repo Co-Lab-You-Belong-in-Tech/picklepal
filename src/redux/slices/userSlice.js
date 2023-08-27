@@ -4,7 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     isAuth:false,
     isModalOpen:false,
-    isInviteAccepted:false
+    isInviteAccepted:false,
+    currentMatchDetails:{},
+    showInvitationComp:false
 }
 
 export const userSlice =createSlice({
@@ -19,9 +21,15 @@ export const userSlice =createSlice({
         },
         displayAcceptedModal:(state,action)=>{
             state.isInviteAccepted=action.payload
+        },
+        matchDetails:(state,action)=>{
+            state.currentMatchDetails=action.payload
+        },
+        inviteMatch:(state,action)=>{
+            state.showInvitationComp=action.payload
         }
     }
 })
 
-export const {authenticate,displayModal,displayAcceptedModal}=userSlice.actions;
+export const {authenticate,displayModal,displayAcceptedModal,matchDetails,inviteMatch}=userSlice.actions;
 export default userSlice.reducer;

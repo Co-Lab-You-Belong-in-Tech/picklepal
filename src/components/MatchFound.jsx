@@ -5,6 +5,10 @@ import mail from "../assets/images/mail.svg"
 import cancel from '../assets/images/cancel.svg'
 import { useLoaderData } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { inviteMatch, matchDetails } from '../redux/slices/userSlice'
+import InviteMatch from './InviteMatch'
+
 
 function MatchFound() {
   const matchFound=useLoaderData()
@@ -13,6 +17,10 @@ function MatchFound() {
   let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
   const{firstName,location,player_pickleball,availability}=currentMatch
 
+  const dispatch=useDispatch()
+  let showInvitationComp=useSelector((state)=>state.user.showInvitationComp)
+  
+   
   
   function getNextMatch(){
     if (count < matchFoundList.length - 1) {
@@ -23,23 +31,32 @@ function MatchFound() {
     }
     
   }
-
+ function MatchInvite(){
+  dispatch(inviteMatch(true))
+  console.log('invite')
+ }
   useEffect(()=>{
-    
-      setCurrentMatch(matchFoundList[count][1]);
+     setCurrentMatch(matchFoundList[count][1]);
+      dispatch(matchDetails(currentMatch))
+        
     
   }
   ,[count,matchFoundList])
   //https:pickleball-o3oe.onrender.com/api/getplayers
+  console.log(currentMatch)
+
   return (
     <>
+    {showInvitationComp?<InviteMatch availability_dates={currentMatch.available_dates}/>:<>
     <h3>Find Match</h3>
     <div className='profile-content-container height'>
-    <ProfileTopSection name={firstName} location={location} icon1={mail} icon2={cancel} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
+    <ProfileTopSection name={firstName} location={location} icon1={mail} icon2={cancel}onclickIcon1={MatchInvite} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
     <div className='profile-bottom-section profile-details'>
     <ProfileBottomSection level={player_pickleball.level} seekingType={player_pickleball.seeking_type.join("0")} availability={availability.day.join(", ")} time={`${availability.time.start} - ${availability.time.end}`}/>
     </div>
     </div>
+    </>}
+    
     </>
   )
 }

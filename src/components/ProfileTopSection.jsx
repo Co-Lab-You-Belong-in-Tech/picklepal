@@ -12,7 +12,7 @@ function ProfileTopSection({name,location,icon1,icon2,onclickIcon1,onclickIcon2,
      <p className='user-location'><img src={locationIcon} alt='location icon' className='location-icon'/>{location}</p>
     </div>
     <div className='profile-edit-container'>
-    <NavLink to={toIcon1}><div onClick={onclickIcon1}><img src={icon1} alt= "profile icon"/></div></NavLink>
+ <div onClick={onclickIcon1}><img src={icon1} alt= "profile icon"/></div>
    <div onClick={onclickIcon2}><img src={icon2} alt="profile icon"/></div>
 
     </div>
