@@ -21,6 +21,7 @@ function MatchFound() {
   const [seeking, setSeeking] = useState([]);
   const [availability, setAvailability] = useState([]);
   const [time, setTime] = useState({});
+  console.log(matchFound)
 
   useEffect(() => {
     if (matchFound.data) {
