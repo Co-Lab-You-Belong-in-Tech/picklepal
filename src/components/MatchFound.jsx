@@ -11,16 +11,48 @@ import InviteMatch from './InviteMatch'
 
 
 function MatchFound() {
-  const matchFound=useLoaderData()
-  const matchFoundList=Object.entries(matchFound.data.data)
-  console.log(matchFoundList)
-  let [count,setCount]=useState(0)
-  let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
-  const{firstName,location,player_pickleball,availability}=currentMatch
 
+  
+  const matchFound = useLoaderData();
   const dispatch=useDispatch()
   let showInvitationComp=useSelector((state)=>state.user.showInvitationComp)
+  const [matchFoundList, setMatchFoundList] = useState([]);
+  const [count, setCount] = useState(0);
+  const [currentMatch, setCurrentMatch] = useState({});
+  const [level,setLevel]=useState('')
+  const [name,setName]=useState('')
+  const [seeking,setSeeking]=useState([])
+  const [availability,setAvailability]=useState([])
+  const [time,setTime]=useState({})
+
+
+
+ console.log(currentMatch)
+//  console.log(player_pickleball)
+
+  
+  
+  useEffect(() => {
+    if (matchFound.data) {
     
+    const matchFoundList=Object.entries(matchFound.data.data)
+    console.log (typeof (matchFoundList))
+    const match=matchFoundList[count][1]
+    console.log(match.availability.time)  
+    setCurrentMatch(match);  
+    setLevel(match.player_pickleball.level)
+    setName(match.firstName)
+    setSeeking(match.player_pickleball.seeking_type)
+    setAvailability(match.availability.day)
+    setTime(match.availability.time)
+    sessionStorage.setItem('dates',JSON.stringify(match.available_dates))
+    sessionStorage.setItem('invitee_id',match._id)
+    }
+  }, [matchFound, count]);
+  
+ 
+  
+ 
   function getNextMatch(){
     if (count < matchFoundList.length - 1) {
       setCount(count + 1);
@@ -34,32 +66,25 @@ function MatchFound() {
   dispatch(inviteMatch(true))
   console.log('invite')
  }
-  useEffect(()=>{
-     setCurrentMatch(matchFoundList[count][1]);  
-     sessionStorage.setItem('dates',JSON.stringify(currentMatch.available_dates))
-     sessionStorage.setItem('invitee_id',currentMatch._id)
-            
-  }
-  ,[count])
-  //https:pickleball-o3oe.onrender.com/api/getplayers
  
-  
+  //https:pickleball-o3oe.onrender.com/api/getplayers
+
 
   return (
     <>
     {showInvitationComp?<InviteMatch availability_dates={dates} invitee_id={currentMatch._id}/>:<>
     <h3>Find Match</h3>
     <div className='profile-content-container height'>
-    <ProfileTopSection name={firstName} location={location} icon1={mail} icon2={cancel}onclickIcon1={MatchInvite} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
+    <ProfileTopSection name={name} location='Toronto' icon1={mail} icon2={cancel}onclickIcon1={MatchInvite} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
     <div className='profile-bottom-section profile-details'>
-    <ProfileBottomSection level={player_pickleball.level} seekingType={player_pickleball.seeking_type.join("0")} availability={availability.day.join(", ")} time={`${availability.time.start} - ${availability.time.end}`}/>
+    <ProfileBottomSection level={level} seekingType={seeking.join("0")} availability={availability.join(", ")} time={`${time.start} - ${time.end}`}/>
     </div>
     </div>
     </>}
+  
     
     </>
-  )
-}
+  )}
 
 export async function Loader(){
   const authToken=sessionStorage.getItem('auth_token')
