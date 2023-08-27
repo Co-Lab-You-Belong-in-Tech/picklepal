@@ -1,3 +1,14 @@
+import React, { useEffect, useState } from 'react'
+import ProfileTopSection from '../components/ProfileTopSection'
+import ProfileBottomSection from '../components/ProfileBottomSection'
+import mail from "../assets/images/mail.svg"
+import cancel from '../assets/images/cancel.svg'
+import { useLoaderData } from 'react-router-dom'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { inviteMatch, matchDetails } from '../redux/slices/userSlice'
+import InviteMatch from './InviteMatch'
+
 function MatchFound() {
   const matchFound = useLoaderData();
   const dispatch = useDispatch();
@@ -71,3 +82,21 @@ function MatchFound() {
     </>
   );
 }
+
+
+export async function Loader(){
+  const authToken=sessionStorage.getItem('auth_token')
+  const config={
+    headers:{
+      Authorization:`Bearer ${authToken}`
+    }
+   
+  }
+ 
+    const response=await axios.get('https:pickleball-o3oe.onrender.com/api/getplayers',config)
+    return response
+
+  
+
+}
+export default MatchFound
