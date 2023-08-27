@@ -21,8 +21,8 @@ function App() {
       {path:"profile" ,element:<Profile/>,
       children:[{path:"invites",element:<Invites/>}]} ,
       {path:"match" ,element:<Match/>,
-      children:[{path:"matchFound",element:<MatchFound/>},
-                {path:"inviteMatch",element:<InviteMatch/>}
+      children:[{path:"matchFound",element:<MatchFound/>}
+                // {path:"inviteMatch",element:<InviteMatch/>}
                 ]},
       {path:"courts" ,element:<Courts/>}
     ]}

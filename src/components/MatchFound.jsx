@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import ProfileTopSection from '../components/ProfileTopSection'
 import ProfileBottomSection from '../components/ProfileBottomSection'
@@ -8,9 +9,10 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { inviteMatch, matchDetails } from '../redux/slices/userSlice'
 import InviteMatch from './InviteMatch'
+import Loading from './Loading'
 
 function MatchFound() {
-  const matchFound = useLoaderData();
+  // const matchFound = useLoaderData();
   const dispatch = useDispatch();
   const showInvitationComp = useSelector((state) => state.user.showInvitationComp);
   const [matchFoundList, setMatchFoundList] = useState([]);
@@ -20,45 +22,39 @@ function MatchFound() {
   const [seeking, setSeeking] = useState([]);
   const [availability, setAvailability] = useState([]);
   const [time, setTime] = useState({});
-  
+  const [loading, setLoading] = useState(true)
+  const [playerData, setPlayerData] = useState({})
 
+
+
+  const fetchData = async () => {
+    try {
+      setLoading(true)
+      const authToken = sessionStorage.getItem('auth_token');
+      const config = {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      };
+
+      const response = await axios.get('https:pickleball-o3oe.onrender.com/api/getplayers', config);
+      const matchList = Object.entries(response.data.data)
+      setMatchFoundList(matchList);
+      console.log('matchList[count][1]', matchList[count][1])
+      setPlayerData(matchList[count][1])
+      setLoading(false)
+    } catch (err) {
+      console.warn(err);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const authToken = sessionStorage.getItem('auth_token');
-        const config = {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        };
-  
-        const response = await axios.get('https:pickleball-o3oe.onrender.com/api/getplayers', config);
-        const matchData=response.data.data
-        const matchList=Object.entries(matchData)
-        const currentMatch=matchList[count][1]
-        setLevel(currentMatch.player_pickleball.level);
-        setName(currentMatch.firstName);
-        setSeeking(currentMatch.player_pickleball.seeking_type);
-        setAvailability(currentMatch.availability.day);
-        setTime(currentMatch.availability.time);
-        sessionStorage.setItem('dates', JSON.stringify(currentMatch.available_dates));
-        sessionStorage.setItem('invitee_id',(currentMatch._id));
-    
-        console.log(currentMatch.player_pickleball.level)
-  
-      } catch (err) {
-        console.warn(err);
-      }
-    };
-  
     fetchData(); // Call the async function
-  }, [count]);
-  
-
+  }, [showInvitationComp]);
 
   function getNextMatch() {
     if (count < matchFoundList.length - 1) {
+      setPlayerData(matchFoundList[count + 1][1])
       setCount(count + 1);
     } else {
       setCount(0);
@@ -69,41 +65,42 @@ function MatchFound() {
     dispatch(inviteMatch(true));
     console.log('invite');
   }
- 
-      
-  
+
+  if (loading)
+    return <Loading />;
+
   return (
-  
     <>
       {showInvitationComp ? (
-        <InviteMatch availability_dates={dates} invitee_id={currentMatch._id} />
+        <InviteMatch availability_dates={playerData.available_dates} invitee_id={playerData._id} />
       ) : (
         <>
           <h3>Find Match</h3>
           <div className='profile-content-container height'>
             <ProfileTopSection
-              name={name}
+              name={playerData.firstName}
               location='Toronto'
               icon1={mail}
               icon2={cancel}
               onclickIcon1={MatchInvite}
               onclickIcon2={getNextMatch}
-              toIcon1='/match/inviteMatch'
+              // toIcon1='/match/inviteMatch'
             />
             <div className='profile-bottom-section profile-details'>
               <ProfileBottomSection
-                level={level}
-                seekingType={seeking.join('0')}
-                availability={availability.join(', ')}
-                time={`${time.start} - ${time.end}`}
+                level={playerData.player_pickleball.level}
+                seekingType={playerData.player_pickleball.seeking_type.join(', ')}
+                availability={playerData.availability.day.join(', ')}
+                time={`${playerData.availability.time.start} - ${playerData.availability.time.end}`}
               />
             </div>
           </div>
         </>
       )}
     </>
-  );}
-      
+  );
+}
+
 
 
 export default MatchFound
