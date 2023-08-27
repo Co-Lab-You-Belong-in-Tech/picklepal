@@ -7,7 +7,7 @@ import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { displayModal } from '../redux/slices/userSlice'
 
-function InviteMatch({availability_dates}) {
+function InviteMatch({availability_dates,invitee_id}) {
   const dispatch=useDispatch()
 
   console.log(availability_dates)
