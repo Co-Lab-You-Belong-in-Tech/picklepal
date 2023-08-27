@@ -73,6 +73,8 @@ function SignUp() {
    setError('') 
    const response=await axios.post("https://pickleball-o3oe.onrender.com/api/register",filteredData)
    console.log(response)
+   const  userData=JSON.stringify(response.data.data)
+   sessionStorage.setItem('user_info',userData)
    const token=response.data.auth_token
    sessionStorage.setItem('auth_token',token)
    navigate('/profile')
