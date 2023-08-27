@@ -16,7 +16,6 @@ function MatchFound() {
   const matchFound = useLoaderData();
   const dispatch=useDispatch()
   let showInvitationComp=useSelector((state)=>state.user.showInvitationComp)
-  const [matchFoundList, setMatchFoundList] = useState([]);
   const [count, setCount] = useState(0);
   const [currentMatch, setCurrentMatch] = useState({});
   const [level,setLevel]=useState('')
