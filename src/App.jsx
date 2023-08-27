@@ -22,6 +22,7 @@ function App() {
       children:[{path:"invites",element:<Invites/>}]} ,
       {path:"match" ,element:<Match/>,
       children:[{path:"matchFound",element:<MatchFound/>,loader:MatchFoundLoader},
+                {path:"inviteMatch",element:<InviteMatch/>}
                 ]},
       {path:"courts" ,element:<Courts/>}
     ]}

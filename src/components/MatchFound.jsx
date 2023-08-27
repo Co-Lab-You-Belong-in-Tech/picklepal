@@ -19,9 +19,7 @@ function MatchFound() {
 
   const dispatch=useDispatch()
   let showInvitationComp=useSelector((state)=>state.user.showInvitationComp)
-  
-   
-  
+    
   function getNextMatch(){
     if (count < matchFoundList.length - 1) {
       setCount(count + 1);
@@ -36,18 +34,19 @@ function MatchFound() {
   console.log('invite')
  }
   useEffect(()=>{
-     setCurrentMatch(matchFoundList[count][1]);
-      dispatch(matchDetails(currentMatch))
-        
-    
+     setCurrentMatch(matchFoundList[count][1]);  
+     sessionStorage.setItem('dates',JSON.stringify(currentMatch.available_dates))
+     sessionStorage.setItem('invitee_id',currentMatch._id)
+            
   }
-  ,[count,matchFoundList])
+  ,[count])
   //https:pickleball-o3oe.onrender.com/api/getplayers
-  console.log(currentMatch)
+ 
+  
 
   return (
     <>
-    {showInvitationComp?<InviteMatch availability_dates={currentMatch.available_dates}/>:<>
+    {showInvitationComp?<InviteMatch availability_dates={dates} invitee_id={currentMatch._id}/>:<>
     <h3>Find Match</h3>
     <div className='profile-content-container height'>
     <ProfileTopSection name={firstName} location={location} icon1={mail} icon2={cancel}onclickIcon1={MatchInvite} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
@@ -63,7 +62,6 @@ function MatchFound() {
 
 export async function Loader(){
   const authToken=sessionStorage.getItem('auth_token')
-  console.log(authToken)
   const config={
     headers:{
       Authorization:`Bearer ${authToken}`
