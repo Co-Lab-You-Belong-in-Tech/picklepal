@@ -16,11 +16,11 @@ function MatchFound() {
   const matchFoundList=Object.entries(matchFound.data.data)
   let [count,setCount]=useState(0)
   let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
-  const{firstName,location,player_pickleball,availability}=currentMatch
   let dates=JSON.stringify(currentMatch.available_dates)
   sessionStorage.setItem('dates',dates)
   let invitee_id=currentMatch._id
   JSON.stringify(sessionStorage.setItem('invitee_id',invitee_id))
+  const{firstName,location,player_pickleball,availability}=currentMatch
   console.log(matchFoundList)
  
   function getNextMatch(){
@@ -47,8 +47,7 @@ function MatchFound() {
 
   return (
     <>
-    {matchFound.data?<>
-    {showInvitationComp?'a':<>
+    {showInvitationComp?<InviteMatch availability_dates={dates} invitee_id={currentMatch._id}/>:<>
     <h3>Find Match</h3>
     <div className='profile-content-container height'>
     <ProfileTopSection name={firstName} location={location} icon1={mail} icon2={cancel}onclickIcon1={MatchInvite} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
@@ -57,7 +56,6 @@ function MatchFound() {
     </div>
     </div>
     </>}
-    </>:'ok'}
     
     </>
   )
