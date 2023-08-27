@@ -47,6 +47,7 @@ function MatchFound() {
 
   return (
     <>
+    {matchFound.data?<>
     {showInvitationComp?'a':<>
     <h3>Find Match</h3>
     <div className='profile-content-container height'>
@@ -56,6 +57,7 @@ function MatchFound() {
     </div>
     </div>
     </>}
+    </>:'ok'}
     
     </>
   )
