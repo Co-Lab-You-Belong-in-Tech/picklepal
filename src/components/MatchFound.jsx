@@ -56,15 +56,17 @@ function MatchFound() {
     if (count < matchFoundList.length - 1) {
       setPlayerData(matchFoundList[count + 1][1])
       setCount(count + 1);
-    } else {
-      setCount(0);
+    } 
+    if(count==matchFoundList.length-1){
+      setCount(0)
     }
+    
   }
 
-  function MatchInvite() {
-    dispatch(inviteMatch(true));
-    console.log('invite');
+  function MatchInvite(){
+    dispatch(inviteMatch(true))
   }
+  
 
   if (loading)
     return <Loading />;
@@ -103,4 +105,4 @@ function MatchFound() {
 
 
 
-export default MatchFound
+export default MatchFound;
