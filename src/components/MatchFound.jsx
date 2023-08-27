@@ -13,6 +13,7 @@ import InviteMatch from './InviteMatch'
 function MatchFound() {
   const matchFound=useLoaderData()
   const matchFoundList=Object.entries(matchFound.data.data)
+  console.log(matchFoundList)
   let [count,setCount]=useState(0)
   let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
   const{firstName,location,player_pickleball,availability}=currentMatch

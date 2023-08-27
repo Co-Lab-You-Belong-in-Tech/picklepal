@@ -21,6 +21,10 @@ button{
     animation: spinner 0.5s linear infinite;
     
 }
+.spinner_navigation{
+  width: 10rem;
+  height: 10rem;
+}
 @keyframes spinner {
     0% {
       transform: rotate(0deg);

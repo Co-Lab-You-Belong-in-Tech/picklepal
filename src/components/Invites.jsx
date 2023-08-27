@@ -11,7 +11,6 @@ function Invites() {
     const dispatch=useDispatch();
     function showModal(){
         dispatch(displayAcceptedModal(true))
-        console.log('fffff')
     }
   return (
     <div className='invites'>

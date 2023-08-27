@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigation } from 'react-router-dom'
 import "../styles/layout.css"
 
 import {BsList} from "react-icons/bs";
@@ -10,10 +10,13 @@ import InviteSentModal from '../components/InviteSentModal';
 import InviteAcceptedModal from '../components/InviteAcceptedModal';
 import { useDispatch } from 'react-redux';
 import { inviteMatch } from '../redux/slices/userSlice';
+import Loading from '../components/Loading';
 
 
 function AppLayout() {
   const [menu,setMenu]=useState(false)
+  const navigation=useNavigation()
+  const navigationState=navigation.state
   const dispatch=useDispatch();
   function toggleMenu(){
   setMenu(!menu)
@@ -51,8 +54,9 @@ function AppLayout() {
         </ul>}
         </div>
       </nav>
-<InviteSentModal/>
-<InviteAcceptedModal/>
+     {navigationState==='loading'&& <Loading/>}
+    <InviteSentModal/>
+    <InviteAcceptedModal/>
    <Outlet/>
     <div><img src={pickleleft} alt='pickleball black illustration' className='left-ball ball'/></div> 
     <div><img src={pickleright} alt='pickleball black illustration' className='right-ball ball'/></div> 

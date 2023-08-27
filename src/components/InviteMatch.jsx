@@ -7,7 +7,7 @@ import {  displayModal } from '../redux/slices/userSlice'
 import axios from 'axios';
 
 function InviteMatch() {
-  const {register,handleSubmit,formState:{errors,isSubmitting}}=useForm()
+  const {register,handleSubmit,setValue,formState:{errors,isSubmitting}}=useForm()
   const availability_dates=JSON.parse(sessionStorage.getItem('dates'))
   const invitee_id=sessionStorage.getItem('invitee_id')
   const dispatch=useDispatch()
@@ -92,8 +92,8 @@ console.log(errors)
           <label htmlFor="partner" >
            <p>Partner</p>
          </label>
-         <input  type="radio" id="opponent" name='seeking_type' value="opponent"/>
-         <label htmlFor="opponent">
+         <input  {...register("seeking_type",{required:'choose a player type'})}  type="radio" id="opponent" name='seeking_type' value="opponent"/>
+         <label htmlFor="opponent" >
            <p>Opponent</p>
          </label>
          <p className="error-message">{errors.seeking_type?.message}</p>
