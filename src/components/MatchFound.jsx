@@ -12,16 +12,16 @@ import InviteMatch from './InviteMatch'
 
 function MatchFound() {
   const dispatch=useDispatch()
-  const matchFound=useLoaderData()
+  const matchFound=useLoaderData() || {a:'wahala',b:'SECOND WAHALA'}
   const matchFoundList=Object.entries(matchFound.data.data)
   let [count,setCount]=useState(0)
   let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
   const{firstName,location,player_pickleball,availability}=currentMatch
-  console.log(matchFoundList)
   let dates=JSON.stringify(currentMatch.available_dates)
   sessionStorage.setItem('dates',dates)
   let invitee_id=currentMatch._id
   JSON.stringify(sessionStorage.setItem('invitee_id',invitee_id))
+  console.log(matchFoundList)
   
   function getNextMatch(){
     if (count < matchFoundList.length - 1) {
