@@ -50,8 +50,11 @@ function MatchFound() {
     dispatch(inviteMatch(true));
     console.log('invite');
   }
-
+  if(MatchFound.data){
+      
+  
   return (
+   
     <>
       {showInvitationComp ? (
         <InviteMatch availability_dates={dates} invitee_id={currentMatch._id} />
@@ -80,9 +83,8 @@ function MatchFound() {
         </>
       )}
     </>
-  );
-}
-
+  );}
+      }
 
 export async function Loader(){
   const authToken=sessionStorage.getItem('auth_token')
