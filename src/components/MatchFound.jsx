@@ -13,6 +13,7 @@ import InviteMatch from './InviteMatch'
 function MatchFound() {
   const dispatch=useDispatch()
   const matchFound=useLoaderData()
+  
   const matchFoundList=Object.entries(matchFound.data.data)
   let [count,setCount]=useState(0)
   let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
@@ -70,7 +71,7 @@ export async function Loader(){
    
   }
  
-    const response=await axios.get('https:pickleball-o3oe.onrender.com/api/getplayers',config)
+    const response=await axios.get('https://pickleball-o3oe.onrender.com/api/getplayers',config)
     return response
 
   
