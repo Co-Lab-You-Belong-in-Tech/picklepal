@@ -10,6 +10,7 @@ import ProfileBottomSection from '../components/ProfileBottomSection'
 
 
 function Profile() {
+
   const [showInviteBtn,setshowInviteBtn]=useState(true)
 
 
@@ -17,14 +18,17 @@ function Profile() {
     setshowInviteBtn(!showInviteBtn)
     
   }
+  const userData=JSON.parse(sessionStorage.getItem('user_info'))
+  const {firstName,location,level,availability_day,availability_time,seeking_type}=userData
+  
   return (
     <AuthenticatedPage>
     <section className='profile-section width'>
     <h3>Profile</h3>
     <div className='profile-content-container height'>
-    <ProfileTopSection name="Andrea" location="North End, Toronto, CA" icon1={settings} icon2={pen}/>
+    <ProfileTopSection name={firstName} location={location} icon1={settings} icon2={pen}/>
     <div className='profile-bottom-section profile-details'>
-    {showInviteBtn?<ProfileBottomSection level='Beginner' availability='Thursday, Saturday, Sunday' time='09:00 - 12:00' seekingType='Partner, Opponent'/>:<Invites/>}
+    {showInviteBtn?<ProfileBottomSection level={level} availability={[...availability_day]} time={`${availability_time.start + '-'+availability_time.end}`} seekingType={[...seeking_type]}/>:<Invites/>}
     </div>
     </div>
     <Button type='text' text={showInviteBtn?'Invites':'Return'} onclick={toggleBtn}/> 

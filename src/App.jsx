@@ -11,6 +11,7 @@ import Invites from "./components/Invites"
 import Login from './pages/Login'
 import MatchFound from './components/MatchFound'
 import InviteMatch from './components/InviteMatch'
+import { Loader as MatchFoundLoader } from './components/MatchFound'
 function App() {
   const router=createBrowserRouter([
     {path:"/",element:<Home/>},
@@ -20,7 +21,7 @@ function App() {
       {path:"profile" ,element:<Profile/>,
       children:[{path:"invites",element:<Invites/>}]} ,
       {path:"match" ,element:<Match/>,
-      children:[{path:"matchFound",element:<MatchFound/>},
+      children:[{path:"matchFound",element:<MatchFound/>,loader:MatchFoundLoader},
                 {path:'inviteMatch',element:<InviteMatch/>}]},
       {path:"courts" ,element:<Courts/>}
     ]}
