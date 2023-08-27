@@ -37,7 +37,7 @@ function MatchFound() {
         },
       };
 
-      const response = await axios.get('https:pickleball-o3oe.onrender.com/api/getplayers', config);
+      const response = await axios.get('https://pickleball-o3oe.onrender.com/api/getplayers', config);
       console.log('response', response)
       const matchList = Object.entries(response.data.data)
       console.log('matchList', matchList)
