@@ -12,7 +12,7 @@ import InviteMatch from './InviteMatch'
 
 function MatchFound() {
   const dispatch=useDispatch()
-  const matchFound=useLoaderData() || {a:'wahala',b:'SECOND WAHALA'}
+  const matchFound=useLoaderData()
   const matchFoundList=Object.entries(matchFound.data.data)
   let [count,setCount]=useState(0)
   let [currentMatch,setCurrentMatch]=useState(matchFoundList[count][1])
@@ -22,18 +22,7 @@ function MatchFound() {
   let invitee_id=currentMatch._id
   JSON.stringify(sessionStorage.setItem('invitee_id',invitee_id))
   console.log(matchFoundList)
-  useEffect(() => {
-    const fetchMatchData = async () => {
-      try {
-        const data = await useLoaderData();
-        console.log(data)
-      } catch (error) {
-        console.warn(error);
-      }
-    };
-
-    fetchMatchData();
-  }, []);
+ 
   function getNextMatch(){
     if (count < matchFoundList.length - 1) {
       setCount(count + 1);
@@ -58,7 +47,7 @@ function MatchFound() {
 
   return (
     <>
-    {showInvitationComp?<InviteMatch availability_dates={dates} invitee_id={currentMatch._id}/>:<>
+    {showInvitationComp?'a':<>
     <h3>Find Match</h3>
     <div className='profile-content-container height'>
     <ProfileTopSection name={firstName} location={location} icon1={mail} icon2={cancel}onclickIcon1={MatchInvite} onclickIcon2={getNextMatch} toIcon1="/match/inviteMatch"/>
