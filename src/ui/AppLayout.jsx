@@ -36,7 +36,7 @@ function AppLayout() {
         <ul className='desktop-ul'>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
-            <ProtectedRoute to="/match/matchFound"><p onClick={closeInvite}>Match</p></ProtectedRoute>
+            <p onClick={closeInvite}><ProtectedRoute to="/match/matchFound">Match</ProtectedRoute></p>
             <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         
         </ul>
@@ -46,7 +46,7 @@ function AppLayout() {
         {menu&&<ul className={`mobile-ul ${menu?'bottom-border':""}`}>
             <NavLink to="/">Home</NavLink>
             <ProtectedRoute to="/profile">Profile</ProtectedRoute>
-            <ProtectedRoute to="/match/matchFound"><p onClick={closeInvite}>Match</p></ProtectedRoute>
+            <p onClick={closeInvite}><ProtectedRoute to="/match/matchFound">Match</ProtectedRoute></p>
             <ProtectedRoute to="/courts">Courts</ProtectedRoute>
         </ul>}
         </div>
