@@ -22,7 +22,18 @@ function MatchFound() {
   let invitee_id=currentMatch._id
   JSON.stringify(sessionStorage.setItem('invitee_id',invitee_id))
   console.log(matchFoundList)
-  
+  useEffect(() => {
+    const fetchMatchData = async () => {
+      try {
+        const data = await useLoaderData();
+        console.log(data)
+      } catch (error) {
+        console.warn(error);
+      }
+    };
+
+    fetchMatchData();
+  }, []);
   function getNextMatch(){
     if (count < matchFoundList.length - 1) {
       setCount(count + 1);
