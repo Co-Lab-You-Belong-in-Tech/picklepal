@@ -17,10 +17,20 @@ html{
   font-size: 62.5%;
   overflow-x: hidden;
 }
+body{
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.5;
+  max-width: 100%;
+  min-height: 100vh;
+  position: relative;
+
+
+}
 #root{
   background-color: var(--bg-light);
-  max-width: 100%;
-  height: 100vh;
+
+  min-height: 100vh;
+  
 }
 
 
@@ -58,11 +68,7 @@ flex: 0 1 ;
 
 }
 
-body{
-  font-family: 'Space Grotesk', sans-serif;
-  line-height: 1.5;
- height: 100%;
-}
+
 .bottom-border{
   border-bottom: 2px solid black;
 }

@@ -1,14 +1,13 @@
 .app-layout{
     background-color: var(--bg-light);
+   
     min-height: 100vh;
-  
     position: relative;
     display: flex;
     justify-content: center;
     z-index: 1;
     padding-top:12rem;
   
-
 
 }
 
