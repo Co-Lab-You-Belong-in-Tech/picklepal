@@ -62,6 +62,9 @@ td {
     justify-content: center;
 }
 /* invitations styles */
+tr td.status{
+  padding-right: 1rem;
+}
 
 @media(max-width:500px){
     .custom-table tr td img {
