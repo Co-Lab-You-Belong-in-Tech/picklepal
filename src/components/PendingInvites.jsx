@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Invites.css";
+import "../styles/invites.css";
 import accept from "../assets/images/check.svg";
 import reject from "../assets/images/cancel.svg";
 import { displayAcceptedModal } from "../redux/slices/userSlice";
