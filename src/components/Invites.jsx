@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/invites.css";
 import PendingInvites from "./PendingInvites";
+import Invitations from "./Invitations";
 
 function Invites() {
   const [invite, setInvite] = useState("pending");
@@ -24,7 +25,7 @@ function Invites() {
         </p>
       </div>
 
-      {invite == "pending" ? <PendingInvites /> : "YOUR INVITATIONS"}
+      {invite == "pending" ? <PendingInvites /> : <Invitations/>}
     </div>
   );
 }
