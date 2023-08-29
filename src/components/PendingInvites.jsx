@@ -40,7 +40,7 @@ function PendingInvites() {
   if (loading) {
     return (
       <div className="center">
-        <div className="spinner" style={{ textAlign: "center" }}></div>
+        <div className="spinner"></div>
       </div>
     );
   }
@@ -50,13 +50,14 @@ function PendingInvites() {
     <table className="custom-table">
       <tbody>
         {pendingLists.map((list) => {
+    
           const dateString = list.match_dt;
           const date = new Date(dateString);
           const month = date.getMonth() + 1;
           const day = date.getDate();
           const matchDate = `${list.match_day} ${month}/${day}`;
           return (
-            <tr>
+            <tr key={list._id}>
               <td className="invite-name">{list.inviter_id.firstName}</td>
               <td className="seeking-td">{list.seeking_type}</td>
               <td className="match-date">
