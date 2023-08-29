@@ -1,36 +1,71 @@
-.invites{
+/* .invites {
+} */
+.invites_title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+.invitations-tab {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.invitations-tab p {
+  margin-bottom: 0;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--light-grey);
+  box-shadow: 0px 0px 5px 0px rgba(18, 1, 1, 0.415);
+  transition: background-color 0.2s ease-in;
+}
+.invitations-tab .active-tab {
+  background-color: var(--green);
+  color: white;
+}
+table {
+  width: 100%;
+}
+tbody {
+  border-right: 2px solid var(--black);
+  width: 100%;
+}
+.seeking-td {
+  border-right: 2px solid var(--black);
+}
+tr,
+td {
+  border: 1px solid var(--black);
+ 
+}
+.custom-table tr td img {
+  margin: 0;
+  padding: 0;
+  width: 3rem;
+  margin-right: 0.5rem;
+}
+td {
+  padding: 0.1rem 0 0.1rem 0.5rem;
+}
+.invite-name {
+  font-weight: 700;
+  color: var(--green);
+}
+.center{
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
-.invites_title{
-    font-weight: 700;
-    font-size: 2rem;    
-}
-table{
 
-    width: 100%;
-}
-tbody{
-    border-right: 2px solid var(--black);
-    width: 100%;
-}
-.seeking-td{
-    border-right: 2px solid var(--black); 
-}
-tr,td{
-    border: 1px solid var(--black);    
-}
-.custom-table tr td img{
-    margin: 0;
-    padding: 0;
-    width: 3rem;
-    margin-right: .5rem;
-}
-td{
-    padding: .1rem 0 .1rem .5rem;
-}
-.invite-name{
-    font-weight: 700;
-    color: var(--green);
+@media(max-width:500px){
+    .custom-table tr td img {
+        width: 35%;
+    }
+    .match-date{
+        text-align: left;
+      
+    }
 }

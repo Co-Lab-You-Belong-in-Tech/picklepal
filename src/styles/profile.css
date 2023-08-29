@@ -1,5 +1,6 @@
 /* MATCH AND PROIFLE STYLES */
 
+
 .profile-content-container{
     width: 100%;
     border: 2px solid var(--black);
@@ -8,8 +9,12 @@
    
 
 }
+
 .profile-details{
     padding: 3rem 3rem 4rem 3rem;
+}
+.no-padding{
+    padding: 0;
 }
 .profile-top-section {
     height: 18rem;
@@ -74,4 +79,11 @@ align-items: center;
 .profile-bottom-section img{
 width: 2rem;
 margin-right: 1.5rem;
+}
+
+@media(max-width:425px){
+    .profile-details{
+        padding: 2rem 2rem 3rem 2rem;
+    }
+   
 }

@@ -7,10 +7,11 @@ import {  displayModal } from '../redux/slices/userSlice'
 import axios from 'axios';
 
 function InviteMatch() {
-  const {register,handleSubmit,setValue,formState:{errors,isSubmitting}}=useForm()
+  const {register,handleSubmit,formState:{errors,isSubmitting}}=useForm()
   const availability_dates=JSON.parse(sessionStorage.getItem('dates'))
   const invitee_id=sessionStorage.getItem('invitee_id')
   const dispatch=useDispatch()
+ 
   
 
   
@@ -39,7 +40,7 @@ function InviteMatch() {
 
   }
 
-console.log(errors)
+
   
   return (
     <div className='invite-match-container'>
@@ -105,4 +106,4 @@ console.log(errors)
   )
 }
 
-export default InviteMatch
+export default React.memo(InviteMatch)

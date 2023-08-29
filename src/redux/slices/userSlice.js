@@ -6,7 +6,8 @@ const initialState={
     isModalOpen:false,
     isInviteAccepted:false,
     currentMatchDetails:{},
-    showInvitationComp:false
+    showInvitationComp:false,
+   
 }
 
 export const userSlice =createSlice({
@@ -31,5 +32,5 @@ export const userSlice =createSlice({
     }
 })
 
-export const {authenticate,displayModal,displayAcceptedModal,matchDetails,inviteMatch}=userSlice.actions;
+export const {authenticate,displayModal,displayAcceptedModal,inviteDate,matchDetails,inviteMatch}=userSlice.actions;
 export default userSlice.reducer;
