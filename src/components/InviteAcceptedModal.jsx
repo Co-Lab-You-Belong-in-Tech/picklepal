@@ -12,13 +12,10 @@ function InviteAcceptedModal() {
   const [email,setEmail]=useState('')
   const isInviteAccepted = useSelector((state) => state.user.isInviteAccepted);
 
-  useEffect(() => {
-    const emailInvite = useSelector((state) => state.user.emailInvite);
-    setEmail(emailInvite)
-    console.log(email)
-  }, [emailInvite]);
-
+  
   function messageInvite() {
+    // const emailInvite = useSelector((state) => state.user.emailInvite);
+    // setEmail(emailInvite)
     dispatch(displayAcceptedModal(false));
   }
  
