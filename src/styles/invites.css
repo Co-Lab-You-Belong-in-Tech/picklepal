@@ -28,18 +28,18 @@
   color: white;
 }
 /* pending invites styles */
-table {
+.custom-table table {
   width: 100%;
 }
-tbody {
+.custom-table tbody {
   border-right: 2px solid var(--black);
   width: 100%;
 }
 .seeking-td {
   border-right: 2px solid var(--black);
 }
-tr,
-td {
+.custom-table tr,
+.custom-table td {
   border: 1px solid var(--black);
  
 }
@@ -49,7 +49,7 @@ td {
   width: 3rem;
   margin-right: 0.5rem;
 }
-td {
+.custom-table td {
   padding: 0.1rem 0 0.1rem 0.5rem;
 }
 .invite-name {
@@ -62,14 +62,14 @@ td {
     justify-content: center;
 }
 /* invitations styles */
-tr td.status{
+/* .custom-table tr td.status{
   padding-right: 1rem;
-}
+} */
 
 @media(max-width:500px){
-    .custom-table tr td img {
+    /* .custom-table tr td img {
         width: 35%;
-    }
+    } */
     .match-date{
         text-align: left;
       
