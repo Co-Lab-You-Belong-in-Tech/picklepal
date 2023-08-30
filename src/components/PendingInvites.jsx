@@ -53,8 +53,9 @@ function PendingInvites() {
       );
 
       if (status === "accepted") {
-        dispatch(displayAcceptedModal(true));
         dispatch(mailInvite(email))
+        dispatch(displayAcceptedModal(true));
+        
         console.log(email)
       }
     } catch (error) {
