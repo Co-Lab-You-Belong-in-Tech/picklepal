@@ -3,7 +3,7 @@ import "../styles/invites.css";
 import accept from "../assets/images/check.svg";
 import reject from "../assets/images/cancel.svg";
 import { displayAcceptedModal, mailInvite } from "../redux/slices/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 function PendingInvites() {
@@ -11,6 +11,7 @@ function PendingInvites() {
   const [pendingLists, setPendingLists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
+ 
 
   useEffect(() => {
     async function getinvites() {
@@ -45,7 +46,6 @@ function PendingInvites() {
         Authorization: `Bearer ${auth_token}`,
       };
       const data = { invite_id, status };
-      console.log(data);
       const response = await axios.post(
         "https://pickleball-o3oe.onrender.com/api/updateinvitestatus",
         data,
@@ -56,7 +56,6 @@ function PendingInvites() {
         dispatch(mailInvite(email))
         dispatch(displayAcceptedModal(true));
         
-        console.log(email)
       }
     } catch (error) {
       console.error(error);
