@@ -18,7 +18,8 @@ function PendingInvites() {
   useEffect(() => {
     async function getinvites() {
       try {
-        const auth_token = sessionStorage.getItem("auth_token");
+        const user_info=JSON.parse(sessionStorage.getItem('user_info'))
+        const auth_token=user_info.auth_token
         const headers = {
           Authorization: `Bearer ${auth_token}`,
         };
@@ -27,7 +28,7 @@ function PendingInvites() {
           { headers }
         );
         const data = response.data.data;
-        // console.log(data)
+        console.log(data)
         setPendingLists(data);
         setLoading(false);
       } catch (err) {

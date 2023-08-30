@@ -15,7 +15,7 @@ function AuthenticatedPage({children}) {
   }, [token]);
   return (
     <div className='auth-page'>
-      {isAuth?children:<Login/>}
+      {isAuth?{children}:<Login/>}
     </div>
   )
 }

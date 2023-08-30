@@ -63,10 +63,11 @@ function MatchFound() {
 }
 
 export async function Loader(){
-  const authToken=sessionStorage.getItem('auth_token')
+  const user_info=JSON.parse(sessionStorage.getItem('user_info'))
+  const auth_token=user_info.auth_token
  
     const headers={
-      Authorization:`Bearer ${authToken}`
+      Authorization:`Bearer ${auth_token}`
     }
    
     const response=await axios.get('https://pickleball-o3oe.onrender.com/api/getplayers',{headers})

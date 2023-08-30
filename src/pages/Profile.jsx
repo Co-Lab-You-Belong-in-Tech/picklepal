@@ -7,8 +7,6 @@ import Invites from '../components/Invites'
 import settings from "../assets/images/setting.svg"
 import pen from "../assets/images/pen.svg"
 import ProfileBottomSection from '../components/ProfileBottomSection'
-
-
 function Profile() {
 
   const [showInviteBtn,setshowInviteBtn]=useState(true)

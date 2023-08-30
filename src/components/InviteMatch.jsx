@@ -23,7 +23,8 @@ function InviteMatch() {
   //https://pickleball-o3oe.onrender.com/api/sendinvitation
 
   async function invitePlayer(data) {
-    const auth_token = sessionStorage.getItem("auth_token");
+    const user_info=JSON.parse(sessionStorage.getItem('user_info'))
+    const auth_token=user_info.auth_token
 
     const allData = { invitee_id, ...data };
 

@@ -7,7 +7,8 @@ function Invitations() {
   useEffect(() => {
     async function getinvitations() {
       try {
-        const auth_token = sessionStorage.getItem("auth_token");
+        const user_info=JSON.parse(sessionStorage.getItem('user_info'))
+        const auth_token=user_info.auth_token
         const headers = {
           Authorization: `Bearer ${auth_token}`,
         };
