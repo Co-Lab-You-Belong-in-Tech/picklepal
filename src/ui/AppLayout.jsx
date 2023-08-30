@@ -36,7 +36,7 @@ function AppLayout() {
     borderRadius: "5px",
     boxShadow: "0 1.5px 3px 0 #000000",
   };
-  const isAuth = useSelector((state) => state.user.isAuth);
+  const isAuth =sessionStorage.getItem('isAuth');
   return (
     <div className="app-layout">
       {!isAuth && (

@@ -3,7 +3,7 @@ import "../styles/invites.css";
 import accept from "../assets/images/check.svg";
 import reject from "../assets/images/cancel.svg";
 import { displayAcceptedModal, mailInvite } from "../redux/slices/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 function PendingInvites() {
@@ -11,7 +11,7 @@ function PendingInvites() {
   const [pendingLists, setPendingLists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
- 
+  const [processing, setProcessing] = useState("");
 
   useEffect(() => {
     async function getinvites() {
@@ -29,7 +29,6 @@ function PendingInvites() {
         const data = response.data.data;
         setPendingLists(data);
         setLoading(false);
-        
       } catch (err) {
         console.warn(err);
       }
@@ -38,8 +37,9 @@ function PendingInvites() {
     getinvites();
   }, []);
 
-  const updateInviteStatus = async (invite_id, status,email) => {
+  const updateInviteStatus = async (invite_id, status, email) => {
     try {
+      setProcessing(`${status == "accepted" ? "accepting" : "rejecting"}`);
       const user_data = JSON.parse(sessionStorage.getItem("user_info"));
       const auth_token = user_data.auth_token;
       const headers = {
@@ -51,11 +51,10 @@ function PendingInvites() {
         data,
         { headers }
       );
-
+      setProcessing("");
       if (status === "accepted") {
-        dispatch(mailInvite(email))
+        dispatch(mailInvite(email));
         dispatch(displayAcceptedModal(true));
-        
       }
     } catch (error) {
       console.error(error);
@@ -87,20 +86,36 @@ function PendingInvites() {
                 {matchDate}, {list.match_st}
               </td>
               <td className="acceptReject">
-                <img
-                  src={accept}
-                  alt="accept invite"
-                  onClick={() => {
-                    updateInviteStatus(list._id, "accepted",list.inviter_id.email);
-                  }}
-                />
-                <img
-                  src={reject}
-                  alt="reject invite"
-                  onClick={() => {
-                    updateInviteStatus(list._id, "rejected",list.inviter_id.email);
-                  }}
-                />
+                {processing == "accepting" ? (
+                  <div >...</div>
+                ) : (
+                  <img
+                    src={accept}
+                    alt="accept invite"
+                    onClick={() => {
+                      updateInviteStatus(
+                        list._id,
+                        "accepted",
+                        list.inviter_id.email
+                      );
+                    }}
+                  />
+                )}
+                {processing == "rejecting" ? (
+                       <div >...</div>
+                ) : (
+                  <img
+                    src={reject}
+                    alt="reject invite"
+                    onClick={() => {
+                      updateInviteStatus(
+                        list._id,
+                        "rejected",
+                        list.inviter_id.email
+                      );
+                    }}
+                  />
+                )}
               </td>
             </tr>
           );

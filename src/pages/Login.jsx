@@ -24,8 +24,12 @@ function Login() {
     try{
       const response=await axios.post("https://pickleball.cyclic.app/api/login",data)
       const  userData=JSON.stringify(response.data.data)
+      sessionStorage.setItem('isAuth',true)
       sessionStorage.setItem('user_info',userData)
+      
+
       navigateTo("/profile")
+      
       dispatch(authenticate(true));
 
      }

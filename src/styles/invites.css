@@ -43,7 +43,7 @@ td {
   border: 1px solid var(--black);
  
 }
-.custom-table tr td img {
+.custom-table tr td img,.custom-table tr td di {
   margin: 0;
   padding: 0;
   width: 3rem;

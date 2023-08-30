@@ -4,7 +4,7 @@ import "../styles/layout.css"
 import { useSelector } from 'react-redux'
 
 function ProtectedRoute({children,to}) {
-const isAuth=useSelector((state)=>state.user.isAuth)
+const isAuth=sessionStorage.getItem('isAuth')
 const location=useLocation()
 const isActive=location.pathname===to
   return (

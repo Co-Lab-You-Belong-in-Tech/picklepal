@@ -71,6 +71,7 @@ function SignUp() {
         );
 
         const userData = JSON.stringify(response.data.data);
+        sessionStorage.setItem("isAuth", true);
         sessionStorage.setItem("user_info", userData);
         const token = response.data.auth_token;
         sessionStorage.setItem("auth_token", token);
