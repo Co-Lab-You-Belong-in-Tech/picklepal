@@ -18,13 +18,12 @@ function InviteMatch() {
   const user_info = JSON.parse(sessionStorage.getItem("user_info"));
 
   const seeking_type = user_info.seeking_type;
-  console.log(seeking_type);
 
   //https://pickleball-o3oe.onrender.com/api/sendinvitation
 
   async function invitePlayer(data) {
-    const user_info=JSON.parse(sessionStorage.getItem('user_info'))
-    const auth_token=user_info.auth_token
+    const user_info = JSON.parse(sessionStorage.getItem("user_info"));
+    const auth_token = user_info.auth_token;
 
     const allData = { invitee_id, ...data };
 
@@ -38,7 +37,7 @@ function InviteMatch() {
         allData,
         { headers }
       );
-      console.log(response);
+
       dispatch(displayModal(true));
     } catch (err) {
       console.warn(err);

@@ -7,8 +7,8 @@ function Invitations() {
   useEffect(() => {
     async function getinvitations() {
       try {
-        const user_info=JSON.parse(sessionStorage.getItem('user_info'))
-        const auth_token=user_info.auth_token
+        const user_info = JSON.parse(sessionStorage.getItem("user_info"));
+        const auth_token = user_info.auth_token;
         const headers = {
           Authorization: `Bearer ${auth_token}`,
         };
@@ -16,9 +16,8 @@ function Invitations() {
           "https://pickleball-o3oe.onrender.com/api/getinvitations",
           { headers }
         );
-     
+
         setInvitationsLists(response.data.data);
-        console.log(response.data.data);
         setLoading(false);
       } catch (err) {
         console.warn(err);
@@ -52,7 +51,9 @@ function Invitations() {
               <td className="match-date">
                 {matchDate}, {list.match_st}
               </td>
-              <td className="status" style={{color:'red'}}>{list.invitation_status}</td>
+              <td className="status" style={{ color: "red" }}>
+                {list.invitation_status}
+              </td>
             </tr>
           );
         })}

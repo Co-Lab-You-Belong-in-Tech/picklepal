@@ -7,7 +7,7 @@ const initialState={
     isInviteAccepted:false,
     currentMatchDetails:{},
     showInvitationComp:false,
-   
+    emailInvite:'ok',
 }
 
 export const userSlice =createSlice({
@@ -28,9 +28,12 @@ export const userSlice =createSlice({
         },
         inviteMatch:(state,action)=>{
             state.showInvitationComp=action.payload
+        },
+        mailInvite:(state,action)=>{
+            state.emailInvite=action.payload
         }
     }
 })
 
-export const {authenticate,displayModal,displayAcceptedModal,inviteDate,matchDetails,inviteMatch}=userSlice.actions;
+export const {authenticate,displayModal,displayAcceptedModal,mailInvite,inviteDate,matchDetails,inviteMatch}=userSlice.actions;
 export default userSlice.reducer;

@@ -8,9 +8,11 @@ const isAuth=useSelector((state)=>state.user.isAuth)
 const location=useLocation()
 const isActive=location.pathname===to
   return (
+
     <NavLink to={to} className={isAuth && isActive ? 'current-active':""}>
         {children}
     </NavLink>
+ 
   )
 }
 
