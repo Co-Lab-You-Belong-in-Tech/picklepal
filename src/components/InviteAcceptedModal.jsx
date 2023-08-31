@@ -9,13 +9,12 @@ import { useState } from "react";
 
 function InviteAcceptedModal() {
   const dispatch = useDispatch();
-  const [email,setEmail]=useState('')
   const isInviteAccepted = useSelector((state) => state.user.isInviteAccepted);
+  const emailInvite = useSelector((state) => state.user.emailInvite);
+  
 
   
   function messageInvite() {
-    // const emailInvite = useSelector((state) => state.user.emailInvite);
-    // setEmail(emailInvite)
     dispatch(displayAcceptedModal(false));
   }
  
@@ -32,7 +31,7 @@ function InviteAcceptedModal() {
       </p>
 
       <a
-        href={`mailto:${email}?subject=Discussing%20Meeting%20Details%20for%20Pickleball%20Match`}
+        href={`mailto:${emailInvite}?subject=Discussing%20Meeting%20Details%20for%20Pickleball%20Match`}
       >
         <Button text="Email" onclick={messageInvite} />
       </a>

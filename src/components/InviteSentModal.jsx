@@ -22,7 +22,7 @@ function InviteSentModal() {
     className='modal-content'
     >
       <h3>Woohoo!</h3>
-      <p>Your invite has been sent. You will receive a response within three days.</p>
+      <p>Your invite has been sent. Check your invitation status on your profile</p>
       <Button text='View More Matches' onclick={closeModal}/>
     </ReactModal>
   )

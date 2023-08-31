@@ -11,6 +11,7 @@ function PendingInvites() {
   const [pendingLists, setPendingLists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
+  const [processing, setProcessing] = useState("");
 
   useEffect(() => {
     async function getinvites() {
@@ -28,7 +29,6 @@ function PendingInvites() {
         const data = response.data.data;
         setPendingLists(data);
         setLoading(false);
-        
       } catch (err) {
         console.warn(err);
       }
@@ -37,26 +37,24 @@ function PendingInvites() {
     getinvites();
   }, []);
 
-  const updateInviteStatus = async (invite_id, status,email) => {
+  const updateInviteStatus = async (invite_id, status, email) => {
     try {
+      setProcessing(`${status == "accepted" ? "accepting" : "rejecting"}`);
       const user_data = JSON.parse(sessionStorage.getItem("user_info"));
       const auth_token = user_data.auth_token;
       const headers = {
         Authorization: `Bearer ${auth_token}`,
       };
       const data = { invite_id, status };
-      console.log(data);
       const response = await axios.post(
         "https://pickleball-o3oe.onrender.com/api/updateinvitestatus",
         data,
         { headers }
       );
-
+      setProcessing("");
       if (status === "accepted") {
-        dispatch(mailInvite(email))
+        dispatch(mailInvite(email));
         dispatch(displayAcceptedModal(true));
-        
-        console.log(email)
       }
     } catch (error) {
       console.error(error);
@@ -88,20 +86,36 @@ function PendingInvites() {
                 {matchDate}, {list.match_st}
               </td>
               <td className="acceptReject">
-                <img
-                  src={accept}
-                  alt="accept invite"
-                  onClick={() => {
-                    updateInviteStatus(list._id, "accepted",list.inviter_id.email);
-                  }}
-                />
-                <img
-                  src={reject}
-                  alt="reject invite"
-                  onClick={() => {
-                    updateInviteStatus(list._id, "rejected",list.inviter_id.email);
-                  }}
-                />
+                {processing == "accepting" ? (
+                  <div >...</div>
+                ) : (
+                  <img
+                    src={accept}
+                    alt="accept invite"
+                    onClick={() => {
+                      updateInviteStatus(
+                        list._id,
+                        "accepted",
+                        list.inviter_id.email
+                      );
+                    }}
+                  />
+                )}
+                {processing == "rejecting" ? (
+                       <div >...</div>
+                ) : (
+                  <img
+                    src={reject}
+                    alt="reject invite"
+                    onClick={() => {
+                      updateInviteStatus(
+                        list._id,
+                        "rejected",
+                        list.inviter_id.email
+                      );
+                    }}
+                  />
+                )}
               </td>
             </tr>
           );
