@@ -1,0 +1,107 @@
+.findcourt__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80rem;
+    width: 90%;
+    overflow-y: auto;
+    height: auto;
+}
+
+.findcourt__container h3 {
+    margin-bottom: 20px;
+}
+
+.search_bar{
+    position: relative;
+    height: 35px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.search_bar input{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding-left: 35px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.search_bar input::placeholder{
+    font-weight: 500;
+    font-size: 12px;
+    color: #212121;
+    opacity: 0.6;
+}
+
+.search_bar .search_icon{
+    position: absolute;
+    top: 7.5px;
+    left: 7.5px;
+    width: 20px;
+    height: 20px;
+}
+
+.search_bar .search_icon img{
+    width: 100%;
+    height: 100%;
+}
+
+.court_count{
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.court_table__container{
+    width: 100%;
+    padding-inline: 12px;
+}
+
+.court_table__container table{ 
+    width: 100%;
+    border-collapse: collapse;
+    border:none;
+    font-size: 14px;
+}
+
+.court_table__container thead{ 
+    border: 2px solid var(--black);
+}
+.court_table__container tbody{ 
+    border: 2px solid var(--black);
+}
+
+.court_table__container th{ 
+    border-right: 2px solid var(--black);
+    padding:6px 10px;
+}
+.court_table__container td{ 
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    padding:6px 10px;
+}
+
+.pagination_btn{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0px;
+}
+.pagination_btn .arrow{
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pagination_btn .disable_arrow {
+    cursor: not-allowed !important;
+    opacity: .5;
+    font-size: 14px;
+    pointer-events: none;
+}
