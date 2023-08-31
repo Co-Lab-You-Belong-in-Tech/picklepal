@@ -13,23 +13,32 @@ import MatchFound from './components/MatchFound'
 import InviteMatch from './components/InviteMatch'
 import { Loader as MatchFoundLoader } from './components/MatchFound'
 function App() {
-  const router=createBrowserRouter([
-    {path:"/",element:<Home/>},
-    {element:<AppLayout/>,children:[
-      {path:"signup" ,element:<SignUp/>},
-      {path:"login" ,element:<Login/>},
-      {path:"profile" ,element:<Profile/>,
-      children:[{path:"invites",element:<Invites/>}]} ,
-      {path:"match" ,element:<Match/>,
-      children:[{path:"matchFound",element:<MatchFound/>,loader:MatchFoundLoader},
-                {path:"inviteMatch",element:<InviteMatch/>}
-                ]},
-      {path:"courts" ,element:<Courts/>}
-    ]}
+  const router = createBrowserRouter([
+    { path: "/", element: <Home /> },
+    {
+      element: <AppLayout />, children: [
+        { path: "signup", element: <SignUp /> },
+        { path: "login", element: <Login /> },
+        {
+          path: "profile", element: <Profile />,
+          children: [
+            { path: "invites", element: <Invites /> }
+          ]
+        },
+        {
+          path: "match", element: <Match />,
+          children: [
+            { path: "matchFound", element: <MatchFound />, loader: MatchFoundLoader },
+            { path: "inviteMatch", element: <InviteMatch /> }
+          ]
+        },
+        { path: "courts", element: <Courts /> }
+      ]
+    }
   ])
 
   return (
-     <RouterProvider router={router}/>  
+    <RouterProvider router={router} />
   )
 }
 
