@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Loading from '../components/Loading';
+import { useEffect, useRef, useState } from 'react';
 import style from '../styles/courts.module.css'
 import search from '../assets/images/search.svg'
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi'

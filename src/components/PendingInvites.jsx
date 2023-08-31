@@ -85,9 +85,9 @@ function PendingInvites() {
               <td className="match-date">
                 {matchDate}, {list.match_st}
               </td>
-              <td className="acceptReject">
+              <td className="acceptReject" style={{display:'flex'}}>
                 {processing == "accepting" ? (
-                  <div >...</div>
+                  <p className="processing">......</p>
                 ) : (
                   <img
                     src={accept}
@@ -102,7 +102,7 @@ function PendingInvites() {
                   />
                 )}
                 {processing == "rejecting" ? (
-                       <div >...</div>
+                       <p className="processing">......</p>
                 ) : (
                   <img
                     src={reject}

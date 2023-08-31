@@ -51,7 +51,7 @@ function Invitations() {
               <td className="match-date">
                 {matchDate}, {list.match_st}
               </td>
-              <td className="status" style={{ color: "red" }}>
+              <td className="status" style={{ color: list.invitation_status==='accepted'?'#006400':'red'}}>
                 {list.invitation_status}
               </td>
             </tr>
