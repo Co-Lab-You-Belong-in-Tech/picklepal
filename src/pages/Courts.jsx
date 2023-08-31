@@ -1,5 +1,4 @@
 import axios from 'axios';
-import AuthenticatedPage from '../components/AuthenticatedPage'
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import style from '../styles/courts.module.css'
@@ -59,7 +58,6 @@ function Courts() {
 
 
   return (
-    <AuthenticatedPage>
       <div className={style.findcourt__container}>
         <h3>Find Court</h3>
         <div className={style.search_bar}>
@@ -122,7 +120,6 @@ function Courts() {
           </div> : <Loading />
         }
       </div>
-    </AuthenticatedPage>
 
   )
 }
