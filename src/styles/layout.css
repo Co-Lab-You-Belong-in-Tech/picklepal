@@ -39,7 +39,9 @@ nav{
 nav .desktop-ul{  
     flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px;
     margin: 0;
     padding: 0;
    
