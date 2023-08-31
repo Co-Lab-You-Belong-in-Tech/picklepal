@@ -67,7 +67,7 @@ function Courts() {
           </div>
         </div >
         {
-          courts.length > 0 ? <div style={{ width: "100%" }}>
+          courts.length > 0 ? <div >
             {
               courts.length > 0 ? <>
                 <div className={style.court_count}>

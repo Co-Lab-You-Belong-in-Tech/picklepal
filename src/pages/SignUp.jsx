@@ -69,7 +69,7 @@ function SignUp() {
           "https://pickleball-o3oe.onrender.com/api/register",
           filteredData
         );
-
+        console.log(response);
         const userData = JSON.stringify(response.data.data);
         sessionStorage.setItem("isAuth", true);
         sessionStorage.setItem("user_info", userData);

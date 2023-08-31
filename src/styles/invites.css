@@ -28,8 +28,9 @@
   color: white;
 }
 /* pending invites styles */
-.custom-table table {
+table.custom-table {
   width: 100%;
+
 }
 .custom-table tbody {
   border-right: 2px solid var(--black);
@@ -43,12 +44,17 @@
   border: 1px solid var(--black);
  
 }
-.custom-table tr td img,.custom-table tr td di {
+.custom-table tr td img {
   margin: 0;
   padding: 0;
   width: 3rem;
   margin-right: 0.5rem;
 }
+td.acceptReject .processing{
+  padding: 0;
+  margin: 0;
+}
+
 .custom-table td {
   padding: 0.1rem 0 0.1rem 0.5rem;
 }
